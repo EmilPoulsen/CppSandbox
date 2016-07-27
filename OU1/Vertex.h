@@ -12,7 +12,9 @@ public:
     ~Vertex(); // destruktor
     double getX();
     double getY();
-
+    std::string getXString(int decimals) ;
+    std::string getYString(int decimals) ;
+    //string testString;
 private:
     double X;
     double Y;

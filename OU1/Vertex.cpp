@@ -1,5 +1,7 @@
 #include "Vertex.h"
 #include <iostream>
+#include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -9,6 +11,7 @@ using namespace std;
  */
 Vertex::Vertex()
 {
+    //this->testString = "rufus test";
     X = 0;
     Y = 0;
 }
@@ -54,6 +57,20 @@ double Vertex:: getX(){
  */
 double Vertex:: getY(){
     return Y;
+}
+
+std::string Vertex::getXString(int decimals){
+    std::stringstream stream;
+    stream << std::fixed << setprecision(decimals) << this->X;
+    string s = stream.str();
+    return s;
+}
+
+std::string Vertex::getYString(int decimals){
+    std::stringstream stream;
+    stream << std::fixed << setprecision(decimals) << this->Y;
+    string s = stream.str();
+    return s;
 }
 
 

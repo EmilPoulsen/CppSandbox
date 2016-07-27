@@ -10,6 +10,7 @@ public:
     Polygon(Vertex v1[], int arrSize);
 
     void add(Vertex v);
+    string print() const;
     double area();
     double minx();
     double maxx();
@@ -17,6 +18,10 @@ public:
     double maxy();
     int numVertices();
     ~Polygon();
+    friend std::ostream & operator<<(std::ostream & os, const Polygon & v){
+        os << v.print();
+        return os;
+    }
 
 private:
     Vertex *vertices;

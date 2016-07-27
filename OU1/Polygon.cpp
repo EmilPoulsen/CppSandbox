@@ -1,6 +1,6 @@
 #include "Polygon.h"
 #include <cmath>
-
+using namespace std;
 /**
  * @brief Polygon::Polygon
  * default constructor
@@ -167,6 +167,21 @@ Polygon::Polygon()
     return numOfVertices;
  }
 
+ string Polygon::print() const {
+     string output = "{";
+     for(int i = 0; i < numOfVertices; i++){
+         Vertex currVert = vertices[i];
+         //output = output + currVert.testString;
+         //output = output + currVert.getYString(0);
+         //double x = currVert.getX();
+         //double y = currVert.getY();
+         output = output + "(" + currVert.getXString(0) + "," + currVert.getYString(0) + ") ";
+         //output = output + "(" + to_string(currVert.getX()) + "," + to_string(currVert.getY()) + ") ";
+     }
+     output += "}";
+     return output;
+ }
+
  /**
   * @brief Polygon::~Polygon
   * Deconstructor
@@ -175,3 +190,24 @@ Polygon::Polygon()
  {
      delete [] vertices;
  }
+
+
+//ostream & operator << (ostream & os, const Polygon & m) {
+
+//    return os.print << print();
+// }
+
+
+// std::ostream &operator<<(std::ostream &os, Polygon const &m) {
+//     return os << m.print();//m.print();
+// }
+
+
+
+
+
+// std::ostream& operator<<(std::ostream &strm, Polygon const &pol) {
+//   return strm << pol.print();
+// }
+
+
