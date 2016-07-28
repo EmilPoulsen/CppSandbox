@@ -4,14 +4,43 @@
 #include "node.h"
 
 
-class ShapeList : public Shape
+class ShapeList
 {
 private:
     Node *_pHead; // pointer of head node
     Node *_pTail; // pointer of tail node
 public:
+    /**
+     * @brief ShapeList
+     * Constructors with No Arguments
+     */
     ShapeList();
-    ShapeList(Shape shape);
+
+    /**
+     * @brief ShapeList
+     * Constructors with a given value of a list node
+     * @param shape
+     */
+    ShapeList(Shape &shape);
+
+    /**
+     * @brief add
+     * Adds a shape to the linked list
+     * @param shape
+     * The shape to add
+     */
+    void add(Shape &shape);
+
+    /**
+     * @brief print
+     * Prints the content of the linked list
+     */
+    void print();
+
+    //Destructor
+    ~ShapeList();
+
+
 };
 
 #endif // SHAPELIST_H

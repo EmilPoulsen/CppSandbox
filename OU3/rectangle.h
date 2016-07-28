@@ -7,6 +7,7 @@ class Rectangle : public Shape
 public:
     Rectangle();
     Rectangle( double x, double y, double width, double height);
+    void print();
 };
 
 #endif // RECTANGLE_H

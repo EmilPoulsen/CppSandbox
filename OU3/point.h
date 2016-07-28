@@ -7,6 +7,7 @@ class Point  : public Shape
 public:
     Point();
     Point(double x, double y, double size);
+    void print();
 };
 
 #endif // POINT_H

@@ -8,3 +8,7 @@ Circle::Circle()
 Circle::Circle( double x, double y, double radie){
 
 }
+
+void Circle::print(){
+
+}

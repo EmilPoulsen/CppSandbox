@@ -8,6 +8,8 @@ protected:
 
 public:
     Shape();
+    virtual void print() = 0;
+
     //virtual void någonFunktion() = 0;
 };
 

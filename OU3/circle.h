@@ -8,6 +8,7 @@ class Circle : public Shape
 public:
     Circle();
     Circle( double x, double y, double radie);
+    void print();
 private:
     double mX;
     double mY;

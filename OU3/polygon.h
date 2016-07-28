@@ -8,6 +8,7 @@ class Polygon : public Shape
 public:
     Polygon();
     Polygon( double x, double y, Vertex *varr, int num);
+    void print();
 };
 
 #endif // POLYGON_H

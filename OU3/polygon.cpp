@@ -7,3 +7,7 @@ Polygon::Polygon()
 Polygon::Polygon( double x, double y, Vertex *varr, int num){
 
 }
+
+void Polygon::print(){
+
+}
