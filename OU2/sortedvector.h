@@ -1,6 +1,8 @@
 #ifndef SORTEDVECTOR_H
 #define SORTEDVECTOR_H
 #include <iostream>
+#include "utility.h";
+
 using namespace std;
 
 template<class T, int sz>
@@ -22,6 +24,8 @@ private:
     int incr;
     T arr[sz];
 };
+
+
 
 /**
  * @brief SortedVector::SortedVector
@@ -45,9 +49,11 @@ bool SortedVector<T, sz>::add(const T& v){
     }
 }
 
+
 template<class T, int sz>
 void SortedVector<T, sz>::print( ostream &os ){
-    //string output;
+//    utility::bubble(arr, incr);
+    //sort();
     for(int i = 0; i < incr; i++){
         //T curr = arr[i];
         //os << curr << endl;
@@ -62,8 +68,6 @@ void SortedVector<T, sz>::print( ostream &os ){
 
     //os << output << endl;
 }
-
-
 
 //template<class T>
 //T& SortedVector<T>::median(){

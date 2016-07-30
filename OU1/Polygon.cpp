@@ -37,7 +37,7 @@ Polygon::Polygon()
   * @return
   * returns the area in the same unit as the vertices
   */
- double Polygon:: calcArea(){
+ double Polygon:: calcArea() const {
      Vertex nextVert, currentVert;
      double areaSum = 0;
 
@@ -85,7 +85,7 @@ Polygon::Polygon()
   * @return
   * returns the area in the same unit as the vertices
   */
- double Polygon::  area(){
+ double Polygon::  area() const {
      return calcArea();
  }
 
@@ -199,6 +199,16 @@ std::ostream & operator<<(std::ostream& os, const Polygon& v){
      os << v.print();
      return os;
  }
+
+bool operator< (const Polygon &c1, const Polygon &c2)
+{
+    return (c1.area()< c2.area());
+}
+
+bool operator> (const Polygon &c1, const Polygon &c2)
+{
+    return (c1.area()> c2.area());
+}
 
 //ostream & operator << (ostream & os, const Polygon & m) {
 

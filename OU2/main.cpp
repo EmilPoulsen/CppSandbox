@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     cout << (Polygon(varr,5)).area() << endl;
 
     polygons.print(cout);
-//    ints.print(cout);
+    ints.print(cout);
 //    cout << "MEDIAN: " << ints.median() << endl;
 //    cout << "MEDIAN: " << polygons.median() << endl;
 //    ints.add( 4); // 1 3 4 6

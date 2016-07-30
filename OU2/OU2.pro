@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    sortedvector.cpp
+    sortedvector.cpp \
+    utility.cpp
 
 HEADERS += \
-    sortedvector.h
+    sortedvector.h \
+    utility.h

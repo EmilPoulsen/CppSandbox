@@ -11,7 +11,7 @@ public:
 
     void add(Vertex v);
     string print() const;
-    double area();
+    double area() const;
     double minx();
     double maxx();
     double miny();
@@ -19,10 +19,12 @@ public:
     int numVertices();
     ~Polygon();
     friend std::ostream & operator<<(std::ostream& os, const Polygon& v);
+    friend bool operator< (const Polygon &c1, const Polygon &c2);
+    friend bool operator> (const Polygon &c1, const Polygon &c2);
 
 private:
     Vertex *vertices;
-    double calcArea();
+    double calcArea() const;
     int numOfVertices;
 };
 
