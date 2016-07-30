@@ -2,6 +2,7 @@
 #define SORTEDVECTOR_H
 #include <iostream>
 #include "utility.h";
+#include <math.h>       /* floor */
 
 using namespace std;
 
@@ -12,7 +13,7 @@ public:
     SortedVector();
 
     bool add(const T& v);
-//    T& median(); TO BE IMPLENTED
+    T& median();
 //    void removeLarger(const T& v); TO BE IMPLENTED
     void print( ostream &os );
     ~SortedVector(){
@@ -45,6 +46,7 @@ bool SortedVector<T, sz>::add(const T& v){
     else{
         arr[incr] = v;
         incr++;
+        utility::bubble(arr, incr);
         return true;
     }
 }
@@ -69,10 +71,13 @@ void SortedVector<T, sz>::print( ostream &os ){
     //os << output << endl;
 }
 
-//template<class T>
-//T& SortedVector<T>::median(){
+template<class T, int sz>
+T& SortedVector<T, sz>::median(){
+    int middleIndex = (incr - 1) / 2;
+    middleIndex = floor (middleIndex);
+    return arr[middleIndex];
 
-//}
+}
 //template<class T>
 //void SortedVector<T>::removeLarger(const T& v){
 //}

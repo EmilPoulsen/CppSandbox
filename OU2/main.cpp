@@ -51,11 +51,11 @@ int main(int argc, char *argv[])
 
     polygons.print(cout);
     ints.print(cout);
-//    cout << "MEDIAN: " << ints.median() << endl;
-//    cout << "MEDIAN: " << polygons.median() << endl;
-//    ints.add( 4); // 1 3 4 6
-//    ints.add( 2); // 1 2 3 4 6
-//    ints.add( 5); // 1 2 3 4 5 6
+    cout << "MEDIAN: " << ints.median() << endl;
+    cout << "MEDIAN: " << polygons.median() << endl;
+    ints.add( 4); // 1 3 4 6
+    ints.add( 2); // 1 2 3 4 6
+    ints.add( 5); // 1 2 3 4 5 6
 //    ints.removeLarger( 3 ); // 1 2 3
 //    cout << "MEDIAN: " << ints.median() << endl;
 
