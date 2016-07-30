@@ -61,6 +61,7 @@ double Vertex:: getY(){
 
 std::string Vertex::getXString(int decimals){
     std::stringstream stream;
+    //stream << "X value";
     stream << std::fixed << setprecision(decimals) << this->X;
     string s = stream.str();
     return s;
@@ -68,6 +69,7 @@ std::string Vertex::getXString(int decimals){
 
 std::string Vertex::getYString(int decimals){
     std::stringstream stream;
+    //stream << "Y value";
     stream << std::fixed << setprecision(decimals) << this->Y;
     string s = stream.str();
     return s;

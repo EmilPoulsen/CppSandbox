@@ -170,12 +170,16 @@ Polygon::Polygon()
  string Polygon::print() const {
      string output = "{";
      for(int i = 0; i < numOfVertices; i++){
-         Vertex currVert = vertices[i];
+         //Vertex currVert = vertices[i];
+         //output += "hello!";
          //output = output + currVert.testString;
          //output = output + currVert.getYString(0);
          //double x = currVert.getX();
          //double y = currVert.getY();
-         output = output + "(" + currVert.getXString(0) + "," + currVert.getYString(0) + ") ";
+         //output += to_string(vertices[i].getX());
+         //output = output + "(" + currVert.getXString(0) + "," + currVert.getYString(0) + ") ";
+         output = output + "(" + vertices[i].getXString(0) + "," + vertices[i].getYString(0) + ") ";
+
          //output = output + "(" + to_string(currVert.getX()) + "," + to_string(currVert.getY()) + ") ";
      }
      output += "}";
@@ -191,6 +195,10 @@ Polygon::Polygon()
      delete [] vertices;
  }
 
+std::ostream & operator<<(std::ostream& os, const Polygon& v){
+     os << v.print();
+     return os;
+ }
 
 //ostream & operator << (ostream & os, const Polygon & m) {
 

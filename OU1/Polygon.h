@@ -18,10 +18,7 @@ public:
     double maxy();
     int numVertices();
     ~Polygon();
-    friend std::ostream & operator<<(std::ostream & os, const Polygon & v){
-        os << v.print();
-        return os;
-    }
+    friend std::ostream & operator<<(std::ostream& os, const Polygon& v);
 
 private:
     Vertex *vertices;

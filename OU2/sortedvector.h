@@ -47,12 +47,12 @@ bool SortedVector<T, sz>::add(const T& v){
 
 template<class T, int sz>
 void SortedVector<T, sz>::print( ostream &os ){
-    string output;
+    //string output;
     for(int i = 0; i < incr; i++){
-        T curr = arr[i];
-        os << curr << endl;
+        //T curr = arr[i];
+        //os << curr << endl;
 
-        //os << arr[i]<< endl;
+        os << arr[i]<< endl;
 
         //os << " ";
        // T curr = arr[i];
@@ -62,6 +62,8 @@ void SortedVector<T, sz>::print( ostream &os ){
 
     //os << output << endl;
 }
+
+
 
 //template<class T>
 //T& SortedVector<T>::median(){
