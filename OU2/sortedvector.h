@@ -14,7 +14,7 @@ public:
 
     bool add(const T& v);
     T& median();
-//    void removeLarger(const T& v); TO BE IMPLENTED
+    void removeLarger(const T& v);
     void print( ostream &os );
     ~SortedVector(){
         //delete [] arr;
@@ -78,8 +78,20 @@ T& SortedVector<T, sz>::median(){
     return arr[middleIndex];
 
 }
-//template<class T>
-//void SortedVector<T>::removeLarger(const T& v){
-//}
+
+template<class T, int sz>
+void SortedVector<T, sz>::removeLarger(const T& v){
+    for(int i = 0; i < incr; i++){
+        if(arr[i] > v){
+            //found the array item larger than v.
+            for(int j = i; j < incr; j++){
+                //remove the items with indices larger than i.
+                arr[j] = 0;
+            }
+            incr = i + 1;
+            return;
+        }
+    }
+}
 
 #endif // SORTEDVECTOR_H

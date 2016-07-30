@@ -11,8 +11,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-
-//    TestVector<Polygon> polygons(10);
     SortedVector<Polygon,10> polygons;
     SortedVector<int,6> ints;
     ints.add( 3 );
@@ -38,17 +36,12 @@ int main(int argc, char *argv[])
     varr[4] = Vertex(2,10);
     polygons.add( Polygon( varr, 5) );
 
-    ////
-//    Polygon ppp(varr,5);
-//    string sss = ppp.print();
-//    cout << sss << endl;
-    ////
+    ////Code for testing the << operator independent of sorted array class
 //    Polygon ppp(varr,5);
 //    cout << ppp << endl;
     ////
 
     cout << (Polygon(varr,5)).area() << endl;
-
     polygons.print(cout);
     ints.print(cout);
     cout << "MEDIAN: " << ints.median() << endl;
@@ -56,12 +49,8 @@ int main(int argc, char *argv[])
     ints.add( 4); // 1 3 4 6
     ints.add( 2); // 1 2 3 4 6
     ints.add( 5); // 1 2 3 4 5 6
-//    ints.removeLarger( 3 ); // 1 2 3
-//    cout << "MEDIAN: " << ints.median() << endl;
-
-//    cout << "hello world";
-
-
+    ints.removeLarger( 3 ); // 1 2 3
+    cout << "MEDIAN: " << ints.median() << endl;
 
     return 0;
 }
