@@ -18,7 +18,7 @@ public:
      * Constructors with a given shape
      * @param shape
      */
-    Node(Shape *shape);
+    Node(Shape &shape);
 
     /**
      * @brief Node
@@ -50,7 +50,7 @@ public:
     void setNext(Node *next);
 
 private:
-    Shape *mShape;
+    Shape mShape;
     Node *mNext; /* pointer to the next node */
 };
 

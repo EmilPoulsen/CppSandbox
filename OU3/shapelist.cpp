@@ -6,13 +6,13 @@ ShapeList::ShapeList(){
 }
 
 ShapeList::ShapeList(Shape &shape){
-    _pHead = new Node(&shape);
+    _pHead = new Node(shape);
     _pTail = _pHead;
 }
 
 void ShapeList::add(Shape &shape){
     if(_pHead == 0){
-        _pHead = new Node(&shape);
+        _pHead = new Node(shape);
         _pTail = _pHead;
     }
     else{
@@ -20,7 +20,7 @@ void ShapeList::add(Shape &shape){
         while (current->getNext() != 0) {
             current = current->getNext();
         }
-        Node *newNode = new Node(&shape);
+        Node *newNode = new Node(shape);
         current->setNext(newNode);
     }
 }
