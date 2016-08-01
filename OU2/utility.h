@@ -2,10 +2,14 @@
 #define UTILITY_H
 
 
-
+/**
+ *Namespace for storing utillity fucntions
+ */
 namespace utility
 {
-
+    /**
+    *Bubble sort
+    */
    template <class X> void bubble(X *items,int count)
    {
      X t;

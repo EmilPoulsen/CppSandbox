@@ -36,10 +36,9 @@ int main(int argc, char *argv[])
     varr[4] = Vertex(2,10);
     polygons.add( Polygon( varr, 5) );
 
-    ////Code for testing the << operator independent of sorted array class
+////Code for testing the << operator independent of sorted array class
 //    Polygon ppp(varr,5);
 //    cout << ppp << endl;
-    ////
 
     cout << (Polygon(varr,5)).area() << endl;
     polygons.print(cout);
