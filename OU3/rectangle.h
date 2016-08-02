@@ -8,6 +8,9 @@ public:
     Rectangle();
     Rectangle( double x, double y, double width, double height);
     void print();
+private:
+    double m_Width;
+    double m_Height;
 };
 
 #endif // RECTANGLE_H

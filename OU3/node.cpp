@@ -7,14 +7,14 @@ Node::Node() : mNext(nullptr){
 }
 
 Node::Node(Shape &shape)
-    :mShape(shape), mNext(nullptr){
+    :mShape(&shape), mNext(nullptr){
 }
 
 Node::Node(Shape &shape, Node *next)
-    :mShape(shape), mNext(next){
+    :mShape(&shape), mNext(next){
 }
 
-Shape& Node::getValue(){
+Shape* Node::getValue(){
     return mShape;
 }
 

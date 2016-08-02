@@ -5,10 +5,11 @@
 class Shape
 {
 protected:
-
+    double m_X;
+    double m_Y;
 public:
     Shape();
-    //virtual void print() = 0;
+    virtual void print() = 0;
 };
 
 #endif // SHAPE_H

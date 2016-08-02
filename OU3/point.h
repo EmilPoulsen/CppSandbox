@@ -8,6 +8,8 @@ public:
     Point();
     Point(double x, double y, double size);
     void print();
+private:
+    double m_Size;
 };
 
 #endif // POINT_H

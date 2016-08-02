@@ -10,9 +10,7 @@ public:
     Circle( double x, double y, double radie);
     void print();
 private:
-    double mX;
-    double mY;
-    double size;
+    double m_Radius;
 };
 
 #endif // CIRCLE_H

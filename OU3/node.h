@@ -33,7 +33,7 @@ public:
      * Returns the shape of the node
      * @return
      */
-    Shape & getValue();
+    Shape* getValue();
 
     /**
      * @brief getNext
@@ -50,7 +50,7 @@ public:
     void setNext(Node *next);
 
 private:
-    Shape mShape;
+    Shape *mShape;
     Node *mNext; /* pointer to the next node */
 };
 

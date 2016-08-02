@@ -33,6 +33,6 @@ int main(int argc, char *argv[])
 //    cout << " Totalyta: " << list.area() << endl;
 //    list2.print();
 //    cout << " Totalyta: " << list2.area() << endl;
-        cout << " Hello world " << endl;
+//        cout << " Hello world " << endl;
     return 0;
 }

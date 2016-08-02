@@ -26,6 +26,13 @@ void ShapeList::add(Shape &shape){
 }
 
 void ShapeList::print(){
+    Node *current = _pHead;
+    while (current != 0){ //->getNext() != 0) {
+        Shape* s = current->getValue();
+        s->print();
+        current = current->getNext();
+    }
+
 
 }
 

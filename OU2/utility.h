@@ -1,12 +1,26 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
+#include <iostream>
+#include <sstream>
+#include <iomanip>
+using namespace std;
+#include <string>
 
 /**
  *Namespace for storing utillity fucntions
  */
 namespace utility
 {
+string doubleToStringDecimalPlaces(double value, int decimals);
+/*
+    string doubleToStringDecimalPlaces(double value, int decimals){
+        std::stringstream stream;
+        stream << std::fixed << setprecision(decimals) << value;
+        string s = stream.str();
+        return s;
+    }
+    */
     /**
     *Bubble sort
     */
