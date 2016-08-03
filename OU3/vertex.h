@@ -10,8 +10,8 @@ public:
     Vertex();
     Vertex(double x, double y);
     ~Vertex(); // destruktor
-    double getX();
-    double getY();
+    double getX() const;
+    double getY() const;
     std::string getXString(int decimals) ;
     std::string getYString(int decimals) ;
     //string testString;

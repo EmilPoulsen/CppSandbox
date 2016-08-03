@@ -1,5 +1,6 @@
 #ifndef SHAPE_H
 #define SHAPE_H
+#include "vertex.h"
 
 
 class Shape
@@ -37,6 +38,8 @@ public:
     void copyBaseProperties(Shape& other);
 
     virtual Shape *clone () = 0;
+
+    bool IsCloseToVertex(const Vertex &v, double tol) const;
 };
 
 #endif // SHAPE_H

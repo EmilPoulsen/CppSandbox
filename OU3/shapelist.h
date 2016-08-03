@@ -2,6 +2,7 @@
 #define SHAPELIST_H
 #include "shape.h"
 #include "node.h"
+#include "vertex.h"
 
 
 class ShapeList
@@ -23,6 +24,8 @@ public:
      */
     ShapeList(Shape &shape);
 
+    void remove( const Vertex &v);
+
     ShapeList( ShapeList& other );
 
     /**
@@ -40,6 +43,7 @@ public:
     void print();
 
     double area();
+
 
     //Destructor
     ~ShapeList();

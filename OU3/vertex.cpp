@@ -45,7 +45,7 @@ Vertex::~Vertex()
  * @return
  * x value
  */
-double Vertex:: getX(){
+double Vertex:: getX() const{
     return X;
 }
 
@@ -55,7 +55,7 @@ double Vertex:: getX(){
  * @return
  * y value
  */
-double Vertex:: getY(){
+double Vertex:: getY() const{
     return Y;
 }
 

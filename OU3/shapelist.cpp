@@ -19,6 +19,32 @@ ShapeList::ShapeList( ShapeList& other ){
 }
 
 
+void ShapeList::remove( const Vertex &v){
+    Node *current = _pHead;
+    Node *previous = _pHead;
+
+    while (current != 0){ //->getNext() != 0) {
+        Shape* s = current->getValue();
+
+        if(s->IsCloseToVertex(v,1))
+        {
+            break;
+            //s->print();
+        }
+        previous = current;
+        current = current->getNext();
+    }
+
+    if(current == _pHead){
+        _pHead = _pHead->getNext();
+    }
+    else{
+        previous->setNext(current->getNext());
+    }
+
+}
+
+
 ShapeList::ShapeList(Shape &shape){
     _pHead = new Node(shape);
     _pTail = _pHead;
