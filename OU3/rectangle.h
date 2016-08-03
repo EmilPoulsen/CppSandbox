@@ -8,6 +8,7 @@ public:
     Rectangle();
     Rectangle( double x, double y, double width, double height);
     void print();
+        double calculateArea();
 private:
     double m_Width;
     double m_Height;

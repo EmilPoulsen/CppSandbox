@@ -10,6 +10,7 @@ public:
     Polygon();
     Polygon( double x, double y, Vertex *varr, int num);
     void print();
+        double calculateArea();
 private:
     Vertex *vertices;
     double calcArea() const;

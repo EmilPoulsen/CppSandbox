@@ -5,5 +5,9 @@ Shape::Shape()
 
 }
 
+double Shape::area(){
+    return calculateArea();
+}
+
 
 

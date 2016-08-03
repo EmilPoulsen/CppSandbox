@@ -36,6 +36,17 @@ void ShapeList::print(){
 
 }
 
+double ShapeList::area(){
+    double totArea = 0;
+    Node *current = _pHead;
+    while (current != 0){ //->getNext() != 0) {
+        Shape* s = current->getValue();
+        totArea +=s->area();
+        current = current->getNext();
+    }
+    return totArea;
+}
+
 //destructor
 ShapeList::~ShapeList(){
 

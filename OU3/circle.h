@@ -9,6 +9,7 @@ public:
     Circle();
     Circle( double x, double y, double radie);
     void print();
+    double calculateArea();
 private:
     double m_Radius;
 };

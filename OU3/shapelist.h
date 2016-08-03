@@ -37,6 +37,8 @@ public:
      */
     void print();
 
+    double area();
+
     //Destructor
     ~ShapeList();
 

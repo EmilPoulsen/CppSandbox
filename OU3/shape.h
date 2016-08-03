@@ -10,6 +10,8 @@ protected:
 public:
     Shape();
     virtual void print() = 0;
+    double area();
+    virtual double calculateArea() = 0;
 };
 
 #endif // SHAPE_H

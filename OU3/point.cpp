@@ -1,8 +1,9 @@
 using namespace std;
+
 #include <iostream>
 #include "point.h"
 #include "../OU2/utility.h"
-
+#include "../OU2/utility.cpp"
 
 Point::Point()
 {
@@ -23,4 +24,8 @@ void Point::print(){
             + utility::doubleToStringDecimalPlaces(m_Size, 0);
 
             cout << output << endl;
+}
+
+double Point::calculateArea(){
+    return m_Size;
 }

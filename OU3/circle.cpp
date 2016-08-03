@@ -2,6 +2,7 @@
 using namespace std;
 #include <iostream>
 #include "../OU2/utility.h"
+#include <math.h>
 
 Circle::Circle()
 {
@@ -25,3 +26,7 @@ void Circle::print(){
 
         cout << output << endl;
 }
+
+    double Circle::calculateArea(){
+        return m_Radius * m_Radius * M_PI;//this->;
+    }

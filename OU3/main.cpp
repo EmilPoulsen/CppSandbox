@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     Point pt( 6, 7, 1 );
     list.add(pt);
     list.print();
-//    cout << " Totalyta: " << list.area() << endl;
+    cout << " Totalyta: " << list.area() << endl;
 //    ShapeList list2(list);
 //    list2.print();
 //    cout << " Totalyta: " << list2.area() << endl;

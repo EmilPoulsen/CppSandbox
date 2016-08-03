@@ -1,5 +1,6 @@
 using namespace std;
 #include <iostream>
+#include <cmath>
 #include "polygon.h"
 #include "../OU2/utility.h"
 
@@ -39,5 +40,26 @@ void Polygon::print(){
 
 
             //cout << "hi from polygon" << endl;
+}
 
+double Polygon::calculateArea(){
+    Vertex nextVert, currentVert;
+    double areaSum = 0;
+
+    //loop through the vertices
+    for(int i = 0; i < numOfVertices; i = i + 1 )
+    {
+        currentVert = vertices[i];
+        if(i == numOfVertices - 1){ //it's the last vertex, take the first vertex
+            nextVert =  vertices[0];
+        }
+        else{
+           nextVert = vertices[i+1]; //it's not the last vertex, take the next vertex
+        }
+
+        areaSum += (currentVert.getX()*nextVert.getY()
+                    - nextVert.getX()*currentVert.getY()) / 2;
+    }
+   return abs(areaSum); //compute absolute value to eliminate any negative areas
+    return 1;
 }

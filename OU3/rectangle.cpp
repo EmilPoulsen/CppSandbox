@@ -31,3 +31,7 @@ void Rectangle::print(){
 
     cout << output << endl;
 }
+
+double Rectangle::calculateArea(){
+    return m_Width * m_Height;
+}
