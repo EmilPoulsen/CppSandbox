@@ -35,3 +35,8 @@ void Rectangle::print(){
 double Rectangle::calculateArea(){
     return m_Width * m_Height;
 }
+
+Shape* Rectangle::clone(){
+    Shape* cloned = new Rectangle(m_X, m_Y,m_Width, m_Height);
+    return cloned;
+}

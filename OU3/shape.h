@@ -33,6 +33,10 @@ public:
      * @return
      */
     virtual double calculateArea() = 0;
+
+    void copyBaseProperties(Shape& other);
+
+    virtual Shape *clone () = 0;
 };
 
 #endif // SHAPE_H

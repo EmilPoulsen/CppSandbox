@@ -63,3 +63,8 @@ double Polygon::calculateArea(){
    return abs(areaSum); //compute absolute value to eliminate any negative areas
     return 1;
 }
+
+Shape* Polygon::clone(){
+    Shape* cloned = new Polygon(m_X, m_Y,vertices,numOfVertices);
+    return cloned;
+}

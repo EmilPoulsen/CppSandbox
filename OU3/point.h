@@ -9,6 +9,7 @@ public:
     Point(double x, double y, double size);
     void print();
         double calculateArea();
+        Shape *clone ();
 private:
     double m_Size;
 };

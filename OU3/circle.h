@@ -10,6 +10,7 @@ public:
     Circle( double x, double y, double radie);
     void print();
     double calculateArea();
+    Shape *clone ();
 private:
     double m_Radius;
 };

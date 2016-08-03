@@ -23,6 +23,8 @@ public:
      */
     ShapeList(Shape &shape);
 
+    ShapeList( ShapeList& other );
+
     /**
      * @brief add
      * Adds a shape to the linked list

@@ -5,6 +5,20 @@ ShapeList::ShapeList(){
     _pHead = _pTail = 0;
 }
 
+ShapeList::ShapeList( ShapeList& other ){
+    _pHead = _pTail = 0;
+
+    Node *current = other._pHead;
+    while (current != 0){
+        Shape* s = current->getValue();
+        this->add(*(s->clone()));
+        //s->print();
+        current = current->getNext();
+    }
+
+}
+
+
 ShapeList::ShapeList(Shape &shape){
     _pHead = new Node(shape);
     _pTail = _pHead;

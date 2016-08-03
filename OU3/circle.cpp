@@ -30,3 +30,9 @@ void Circle::print(){
     double Circle::calculateArea(){
         return m_Radius * m_Radius * M_PI;//this->;
     }
+
+Shape* Circle::clone(){
+    Shape* cloned = new Circle(m_X, m_Y, m_Radius);
+    return cloned;
+}
+

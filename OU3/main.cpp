@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
     list.add(pt);
     list.print();
     cout << " Totalyta: " << list.area() << endl;
-//    ShapeList list2(list);
-//    list2.print();
-//    cout << " Totalyta: " << list2.area() << endl;
+    ShapeList list2(list);
+    list2.print();
+    cout << " Totalyta: " << list2.area() << endl;
 //    list.remove( Vertex(5,5) );
 //    list.print();
 //    cout << " Totalyta: " << list.area() << endl;
