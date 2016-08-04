@@ -7,10 +7,16 @@ SOURCES += main.cpp \
     lendingitem.cpp \
     book.cpp \
     journal.cpp \
-    compactdisc.cpp
+    compactdisc.cpp \
+    libraryapp.cpp \
+    librarygui.cpp \
+    libraryhandler.cpp
 
 HEADERS += \
     lendingitem.h \
     book.h \
     journal.h \
-    compactdisc.h
+    compactdisc.h \
+    libraryapp.h \
+    librarygui.h \
+    libraryhandler.h
