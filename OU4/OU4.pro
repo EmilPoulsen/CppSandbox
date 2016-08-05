@@ -9,7 +9,6 @@ SOURCES += main.cpp \
     journal.cpp \
     compactdisc.cpp \
     libraryapp.cpp \
-    librarygui.cpp \
     libraryhandler.cpp
 
 HEADERS += \
@@ -18,5 +17,4 @@ HEADERS += \
     journal.h \
     compactdisc.h \
     libraryapp.h \
-    librarygui.h \
     libraryhandler.h

@@ -1,14 +1,17 @@
 #ifndef LIBRARYAPP_H
 #define LIBRARYAPP_H
-#include "librarygui.h";
 #include "libraryhandler.h";
+using namespace std;
+#include <string>
 
 class LibraryApp
 {
 public:
     LibraryApp();
+    void Run();
 private:
-    //LibraryGUI m_
+    void ReadLibraryDb(string path);
+    LibraryHandler _handler;
 
 };
 
