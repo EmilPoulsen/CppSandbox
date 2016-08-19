@@ -12,3 +12,11 @@ std::string Book::getAuthor(){
 std::string Book::getTitle(){
     return m_Title;
 }
+
+void Book::setBookType(Enums::ItemTypes bookType){
+    m_BookType = bookType;
+}
+
+Enums::ItemTypes Book::getBookType(){
+    return m_BookType;
+}

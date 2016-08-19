@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     journal.cpp \
     compactdisc.cpp \
     libraryapp.cpp \
-    libraryhandler.cpp
+    libraryhandler.cpp \
+    enums.cpp
 
 HEADERS += \
     lendingitem.h \
@@ -17,4 +18,5 @@ HEADERS += \
     journal.h \
     compactdisc.h \
     libraryapp.h \
-    libraryhandler.h
+    libraryhandler.h \
+    enums.h
