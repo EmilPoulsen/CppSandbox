@@ -36,6 +36,7 @@ private:
     void startSearchDialog();
     vector<LendingItem*> searchInLibrary(string &searchString, string &TitleorAuthor);
     bool stringContainsOtherString(string word, string substring);
+    void printFoundObjects(vector<LendingItem*> &foundItems);
 
 
     //std::shared_ptr<GuiLibrary> m_GuiLibrary;

@@ -51,7 +51,33 @@ void LibraryApp::startSearchDialog(){
     string searchString = m_GuiLibrary.enterSearchString();
     foundObjects = searchInLibrary(searchString, titleOrAuthor);
 
+    if(foundObjects.size() == 0){
+        string message = "Sorry, no objects found on search string '" + searchString + "'";
+        m_GuiLibrary.printString(message);
+    }
+    else{
+        printFoundObjects(foundObjects);
+    }
 }
+
+void LibraryApp::printFoundObjects(vector<LendingItem*> &foundItems){
+    vector<string> outputPerFoundItem;
+    string separator = "-----------------------------";
+
+    for(int i = 0; i < foundItems.size(); i++){
+        outputPerFoundItem.clear();
+        outputPerFoundItem.push_back(separator);
+        LendingItem* currentItem = foundItems[i];
+        outputPerFoundItem.push_back(currentItem->getItemTypeString());
+        outputPerFoundItem.push_back(currentItem->getOriginator());
+        outputPerFoundItem.push_back(currentItem->getTitle());
+        outputPerFoundItem.push_back(currentItem->getIdString());
+        outputPerFoundItem.push_back(separator);
+        m_GuiLibrary.printStringVectorOnSeparateLines(outputPerFoundItem);
+    }
+}
+
+
 
 vector<LendingItem*> LibraryApp::searchInLibrary(string &searchString, string &TitleorAuthor){
     vector<LendingItem*> foundObjects;
@@ -213,6 +239,8 @@ void LibraryApp::processUserInput(std::string &input){
        cout << "Invalid Selection\n";
        break;
      }
+     newItem->setItemType(type);
+
      return newItem;
  }
 

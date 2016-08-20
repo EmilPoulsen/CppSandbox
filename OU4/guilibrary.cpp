@@ -77,6 +77,17 @@ void GuiLibrary::printHelp(){
 }
 
 
+void GuiLibrary::printStringVectorOnSeparateLines(const vector<string> &outputVector){
+    for(int i = 0; i < outputVector.size(); i++){
+        cout << outputVector[i] << endl;
+    }
+}
+
+void GuiLibrary::printString(const string &output){
+    cout << output << endl;
+}
+
+
 void GuiLibrary::printInvalidInput(std::string &input){
     cout << "Invalid input '" << input << "'. Please try again." << endl;
 }
