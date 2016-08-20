@@ -15,9 +15,11 @@ public:
     bool userSelectedExitOption(std::string &input);
     void printExitMessege();
     std::string askTitleOrAuthor();
+    std::string enterSearchString();
+    void convertStringToUpper(std::string &str);
 
 private:
-    void convertStringToUpper(std::string &str);
+
 
 };
 

@@ -26,3 +26,8 @@ void Book::setBookType(Enums::ItemTypes bookType){
 Enums::ItemTypes Book::getBookType(){
     return m_BookType;
 }
+
+std::string Book::getOriginator(){
+    return m_Author;
+}
+

@@ -31,10 +31,11 @@ private:
     int m_IdCount;
     void runMainLoop();
     GuiLibrary m_GuiLibrary;
-    vector<LendingItem> m_LibraryDatabase;
+    vector<LendingItem*> m_LibraryDatabase;
     void processUserInput(string &input);
     void startSearchDialog();
-    //void searchInLibrary(string searchString, )
+    vector<LendingItem*> searchInLibrary(string &searchString, string &TitleorAuthor);
+    bool stringContainsOtherString(string word, string substring);
 
 
     //std::shared_ptr<GuiLibrary> m_GuiLibrary;

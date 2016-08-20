@@ -17,3 +17,8 @@ std::string Journal::getTitle(){
 std::string Journal::getVolume(){
     return m_Volume;
 }
+
+
+std::string Journal::getOriginator(){
+    return m_Volume;
+}

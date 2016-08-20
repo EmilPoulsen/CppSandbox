@@ -57,6 +57,12 @@ string GuiLibrary::askTitleOrAuthor(){
     }
 }
 
+std::string GuiLibrary::enterSearchString(){
+    cout << "Enter search string: ";
+    string input = readUserInput();
+    return input;
+}
+
 void GuiLibrary::printHelp(){
     cout << "C - insert new CD" << endl;
     cout << "F - insert new Fiction book" << endl;

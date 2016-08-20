@@ -10,9 +10,11 @@ public:
     Book();
     Book(Enums::ItemTypes bookType, std::string author, std::string title, int ID);
     std::string getAuthor();
-    std::string getTitle();
+    //std::string getTitle();
     void setBookType(Enums::ItemTypes bookType);
     Enums::ItemTypes getBookType();
+    std::string getOriginator();
+    std::string getTitle();
 
 
 private:

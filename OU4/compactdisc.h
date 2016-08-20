@@ -11,6 +11,7 @@ public:
     std::string getArtist();
     std::string getRunTime();
     std::string getTitle();
+    std::string getOriginator();
 
 private:
     std::string m_Artist;

@@ -45,19 +45,50 @@ void LibraryApp::runMainLoop(){
 
 
 void LibraryApp::startSearchDialog(){
-    string input = m_GuiLibrary.askTitleOrAuthor();
-        if(input == "T"){
 
-        }
-        else if(input == "A"){
-            //return input;
-        }
-        else{
-            //should never hit this point.
-        }
+    vector<LendingItem*> foundObjects;
+    string titleOrAuthor = m_GuiLibrary.askTitleOrAuthor();
+    string searchString = m_GuiLibrary.enterSearchString();
+    foundObjects = searchInLibrary(searchString, titleOrAuthor);
+
 }
 
+vector<LendingItem*> LibraryApp::searchInLibrary(string &searchString, string &TitleorAuthor){
+    vector<LendingItem*> foundObjects;
 
+    for(int i = 0; i < m_LibraryDatabase.size(); i++)
+    {
+        LendingItem* currObject =   m_LibraryDatabase[i];
+        string searchProperty;
+        if(TitleorAuthor == "T"){
+            searchProperty = currObject->getTitle();
+        }
+        else if(TitleorAuthor == "A"){
+            searchProperty = currObject->getOriginator();
+        }
+        else{
+
+        }
+
+        if(stringContainsOtherString(searchString, searchProperty)){
+            foundObjects.push_back(currObject);
+        }
+    }
+
+    return foundObjects;
+}
+
+bool LibraryApp::stringContainsOtherString(string word, string substring){
+    string s2 = word;
+    string s1 = substring;
+
+    m_GuiLibrary.convertStringToUpper(s1);
+    m_GuiLibrary.convertStringToUpper(s2);
+    bool found = (s1.find(s2) != std::string::npos);
+
+    return found;
+
+    }
 
 
 void LibraryApp::processUserInput(std::string &input){
@@ -120,7 +151,7 @@ void LibraryApp::processUserInput(std::string &input){
  }
 
  vector<LendingItem> LibraryApp:: createLendingItemsFromTxt(vector<string> database){
-     vector<LendingItem*> lendingItems;
+     //vector<LendingItem*> lendingItems;
      LendingItem* newLibraryEntity;
      int startRowOfObject;
      int endRowOfObject;
@@ -136,7 +167,7 @@ void LibraryApp::processUserInput(std::string &input){
             if(i != 0){
                 //create the object if not equal to zero
                 newLibraryEntity = createNewLendingItem(database, startRowOfObject, endRowOfObject, prevItem, generateNewId());
-                lendingItems.push_back(newLibraryEntity);
+                m_LibraryDatabase.push_back(newLibraryEntity);
             }
 
             startRowOfObject = i;
@@ -150,7 +181,7 @@ void LibraryApp::processUserInput(std::string &input){
         //for the last item
         if(i == database.size() -1){
             newLibraryEntity = createNewLendingItem(database, startRowOfObject, endRowOfObject, prevItem, generateNewId());
-            lendingItems.push_back(newLibraryEntity);
+            m_LibraryDatabase.push_back(newLibraryEntity);
         }
 
      }
@@ -225,7 +256,9 @@ int LibraryApp::generateNewId(){
 
 
 LibraryApp:: ~LibraryApp(){
-    //should m_GuiLibrary be deleted?!
-    //delete [] m_GuiLibrary;
+    //delete the library items
+    for(int i = 0; i < m_LibraryDatabase.size(); ++i){
+       delete m_LibraryDatabase[i];
+    }
 }
 
