@@ -25,7 +25,9 @@ private:
     vector<LendingItem> createLendingItemsFromTxt(vector<string> database);
     LibraryHandler _handler;
     Enums::ItemTypes txtLineIsNewLendingItem(string &line);
-    LendingItem* createNewLendingItem(vector<string> &database, int &startrow, int &endrow, Enums::ItemTypes type);
+    LendingItem* createNewLendingItem(vector<string> &database, int &startrow, int &endrow, Enums::ItemTypes type, int id);
+    int generateNewId();
+    int m_IdCount;
 };
 
 

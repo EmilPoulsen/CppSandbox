@@ -5,10 +5,15 @@ Journal::Journal()
 
 }
 
+Journal::Journal(std::string title, std::string volume, int id)
+    :m_Title(title), m_Volume(volume) {
+    m_ID = id;
+}
+
 std::string Journal::getTitle(){
     return m_Title;
 }
 
-int Journal::getVolume(){
+std::string Journal::getVolume(){
     return m_Volume;
 }

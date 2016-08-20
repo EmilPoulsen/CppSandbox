@@ -9,10 +9,14 @@ int LendingItem::getID(){
     return m_ID;
 }
 
-bool LendingItem::IsAvailable(){
-    return m_Available;
+bool LendingItem::IsLentOut(){
+    return m_IsLentOut;
 }
 
 int LendingItem::getLenderIndex(){
     return m_LenderIndex;
+}
+
+void LendingItem::setLenderIndex(int index){
+    m_LenderIndex = index;
 }

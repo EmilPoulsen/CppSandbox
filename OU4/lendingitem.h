@@ -7,12 +7,14 @@ class LendingItem
 public:
     LendingItem();
     int getID();
-    bool IsAvailable();
+    bool IsLentOut();
     int getLenderIndex();
-private:
+    void setLenderIndex(int index);
+protected:
     int m_ID;
-    bool m_Available;
+    bool m_IsLentOut;
     int m_LenderIndex;
+private:
 };
 
 #endif // LENDINGITEM_H

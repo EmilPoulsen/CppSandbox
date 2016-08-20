@@ -5,11 +5,16 @@ CompactDisc::CompactDisc()
 
 }
 
+CompactDisc::CompactDisc(std::string artist, std::string title, std::string runtime, int id)
+    :m_Artist(artist), m_Title(title), m_RunTime(runtime){
+       m_ID = id;
+}
+
 std::string CompactDisc::getArtist(){
     return m_Artist;
 }
 
-int CompactDisc::getRunTime(){
+std::string CompactDisc::getRunTime(){
     return m_RunTime;
 }
 

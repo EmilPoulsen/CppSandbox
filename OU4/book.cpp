@@ -5,6 +5,12 @@ Book::Book()
 
 }
 
+Book::Book(Enums::ItemTypes bookType, std::string author, std::string title, int ID)
+    :m_BookType(bookType), m_Author(author), m_Title(title)
+{
+    m_ID = ID;
+}
+
 std::string Book::getAuthor(){
     return m_Author;
 }

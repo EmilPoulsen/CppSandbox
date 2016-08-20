@@ -7,14 +7,15 @@ class CompactDisc : public LendingItem
 {
 public:
     CompactDisc();
+    CompactDisc(std::string artist, std::string title, std::string runtime, int id);
     std::string getArtist();
-    int getRunTime();
+    std::string getRunTime();
     std::string getTitle();
 
 private:
     std::string m_Artist;
     std::string m_Title;
-    int m_RunTime;
+    std::string m_RunTime;
 
 };
 

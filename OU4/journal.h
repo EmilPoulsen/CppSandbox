@@ -7,11 +7,14 @@ class Journal : public LendingItem
 {
 public:
     Journal();
+
+    Journal(std::string title, std::string volume, int id);
+
     std::string getTitle();
-    int getVolume();
+    std::string getVolume();
 private:
     std::string m_Title;
-    int m_Volume;
+    std::string m_Volume;
 };
 
 #endif // JOURNAL_H
