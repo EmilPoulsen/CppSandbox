@@ -8,6 +8,7 @@
 #include "compactdisc.h"
 #include "book.h"
 #include "journal.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -22,7 +23,88 @@ void LibraryApp::Run(){
     //string s2 = ExePath();
     //cout << s2 << endl;
     ReadLibraryDb(fileLoc);
-        cout << "Hello World!" << endl;
+    //m_GuiLibrary = new GuiLibrary();
+    runMainLoop();
+
+
+}
+
+
+
+void LibraryApp::runMainLoop(){
+
+
+    bool quitApp = false;
+    while(!quitApp){
+        m_GuiLibrary.printUserOptions();
+        std::string input = m_GuiLibrary.readUserInput();
+        processUserInput(input);
+        quitApp = m_GuiLibrary.userSelectedExitOption(input);
+    }
+}
+
+
+void LibraryApp::startSearchDialog(){
+    string input = m_GuiLibrary.askTitleOrAuthor();
+        if(input == "T"){
+
+        }
+        else if(input == "A"){
+            //return input;
+        }
+        else{
+            //should never hit this point.
+        }
+}
+
+
+
+
+void LibraryApp::processUserInput(std::string &input){
+    //std::transform(input.begin(), input.end(),input.begin(), ::toupper);
+
+
+    if(input == "X"){
+
+    }
+
+    else if(input == "H"){
+        m_GuiLibrary.printHelp();
+    }
+    else if(input == "C"){
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "F"){
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "N"){
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "J"){
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "H"){
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "S"){
+        startSearchDialog();
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "B"){
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "R"){
+        //m_GuiLibrary.printHelp();
+    }
+    else if(input == "Q"){
+        m_GuiLibrary.printExitMessege();
+    }
+
+    else{
+        m_GuiLibrary.printInvalidInput(input);
+
+    }
+
 }
 
 
@@ -45,7 +127,7 @@ void LibraryApp::Run(){
      Enums::ItemTypes prevItem;
 
      for(int i=0; i < database.size(); i++){
-        cout << database[i] << endl;
+        //cout << database[i] << endl;
          Enums::ItemTypes item;
         item = txtLineIsNewLendingItem(database[i]);
 
@@ -142,5 +224,8 @@ int LibraryApp::generateNewId(){
  }
 
 
-
+LibraryApp:: ~LibraryApp(){
+    //should m_GuiLibrary be deleted?!
+    //delete [] m_GuiLibrary;
+}
 

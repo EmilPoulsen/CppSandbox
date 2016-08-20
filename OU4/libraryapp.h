@@ -6,7 +6,7 @@ using namespace std;
 #include <vector>
 #include "lendingitem.h"
 #include "enums.h"
-
+#include "guilibrary.h"
 
 class LibraryApp
 {
@@ -18,6 +18,7 @@ public:
 
     //enum Days { Saturday,Sunday,Tuesday,Wednesday,Thursday,Friday};
 
+    ~LibraryApp();
 
 private:
     void ReadLibraryDb(string path);
@@ -28,6 +29,15 @@ private:
     LendingItem* createNewLendingItem(vector<string> &database, int &startrow, int &endrow, Enums::ItemTypes type, int id);
     int generateNewId();
     int m_IdCount;
+    void runMainLoop();
+    GuiLibrary m_GuiLibrary;
+    vector<LendingItem> m_LibraryDatabase;
+    void processUserInput(string &input);
+    void startSearchDialog();
+    //void searchInLibrary(string searchString, )
+
+
+    //std::shared_ptr<GuiLibrary> m_GuiLibrary;
 };
 
 

@@ -7,8 +7,6 @@ int main(int argc, char *argv[])
 {
     LibraryApp app;
     app.Run();
-
-
-    cout << "Hello World!" << endl;
+    //cout << "just before exit" << endl;
     return 0;
 }
