@@ -31,3 +31,9 @@ std::string Book::getOriginator(){
     return m_Author;
 }
 
+std::string Book::getExtraInfo(){
+    return "";
+}
+
+
+

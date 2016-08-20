@@ -15,6 +15,7 @@ public:
     Enums::ItemTypes getBookType();
     std::string getOriginator();
     std::string getTitle();
+    std::string getExtraInfo();
 
 
 private:

@@ -26,3 +26,7 @@ std::string CompactDisc::getOriginator(){
     return m_Artist;
 }
 
+std::string CompactDisc::getExtraInfo(){
+    return m_RunTime;
+}
+

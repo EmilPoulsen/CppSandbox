@@ -87,6 +87,10 @@ void GuiLibrary::printString(const string &output){
     cout << output << endl;
 }
 
+void GuiLibrary::printStringWithoutEndLine(const string &output){
+    cout << output;
+}
+
 
 void GuiLibrary::printInvalidInput(std::string &input){
     cout << "Invalid input '" << input << "'. Please try again." << endl;
@@ -98,4 +102,57 @@ bool GuiLibrary::userSelectedExitOption(std::string &input){
 
 void GuiLibrary::printExitMessege(){
     cout << "The application will now exit" << endl;
+}
+
+bool GuiLibrary::initializeReturnProcedure(int &id){
+    bool idDone = false;
+    while(!idDone){
+        cout << "ID: ";
+        string idString = readUserInput();
+        if(!str2int(id, idString.c_str())){
+            printInvalidInput(idString);
+        }
+        else{
+            return true;
+        }
+    }
+}
+
+bool GuiLibrary::initializeBorrowProceedure(int &id, int &borrower){
+    bool idDone = false;
+    while(!idDone){
+        cout << "ID: ";
+        string idString = readUserInput();
+        if(!str2int(id, idString.c_str())){
+            printInvalidInput(idString);
+        }
+        else{
+            bool borrowerDone = false;
+            while(!borrowerDone){
+                cout << "Borrower: ";
+                string borrowString = readUserInput();
+                if(!str2int(borrower, borrowString.c_str())){
+                    printInvalidInput(borrowString);
+                }
+                else{
+                    borrowerDone = true;
+                    idDone = true;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+bool GuiLibrary::str2int (int &i, char const *s)
+{
+
+    char              c;
+    std::stringstream ss(s);
+    ss >> i;
+    if (ss.fail() || ss.get(c)) {
+        // not an integer
+        return false;
+    }
+    return true;
 }

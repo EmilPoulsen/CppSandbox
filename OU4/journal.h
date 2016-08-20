@@ -13,6 +13,7 @@ public:
     std::string getTitle();
     std::string getVolume();
     std::string getOriginator();
+    std::string getExtraInfo();
 private:
     std::string m_Title;
     std::string m_Volume;

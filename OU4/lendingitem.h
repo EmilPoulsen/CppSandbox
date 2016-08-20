@@ -9,6 +9,7 @@ public:
     LendingItem();
     virtual std::string getOriginator() = 0;
     virtual std::string getTitle() = 0;
+    virtual std::string getExtraInfo() = 0; //playtime for CD for example
     int getID();
     bool IsLentOut();
     int getLenderIndex();

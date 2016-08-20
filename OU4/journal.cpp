@@ -22,3 +22,7 @@ std::string Journal::getVolume(){
 std::string Journal::getOriginator(){
     return m_Volume;
 }
+
+std::string Journal::getExtraInfo(){
+    return "";
+}

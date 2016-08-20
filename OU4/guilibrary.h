@@ -22,6 +22,11 @@ public:
     void convertStringToUpper(std::string &str);
     void printStringVectorOnSeparateLines(const std::vector<string> &outputVector);
     void printString(const std::string &output);
+    void printStringWithoutEndLine(const string &output);
+    bool initializeBorrowProceedure(int &id, int &borrower);
+    bool initializeReturnProcedure(int &id);
+    bool str2int (int &i, char const *s);
+
 private:
 
 
