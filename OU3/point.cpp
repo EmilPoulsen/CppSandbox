@@ -17,13 +17,17 @@ Point::Point(double x, double y, double size)
 }
 
 void Point::print(){
+    cout << getPrintString() << endl;
+}
+
+string Point::getPrintString(){
     string output = "POINT: (";
     output += utility::doubleToStringDecimalPlaces(m_X, 0) + ", ";
     output += utility::doubleToStringDecimalPlaces(m_Y, 0) + ")";
     output += " "
             + utility::doubleToStringDecimalPlaces(m_Size, 0);
+    return output;
 
-            cout << output << endl;
 }
 
 double Point::calculateArea(){

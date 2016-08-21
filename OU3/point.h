@@ -8,6 +8,7 @@ public:
     Point();
     Point(double x, double y, double size);
     void print();
+        string getPrintString();
         double calculateArea();
         Shape *clone ();
 private:

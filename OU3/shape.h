@@ -21,6 +21,8 @@ public:
      */
     virtual void print() = 0;
 
+    virtual string getPrintString() = 0;
+
     /**
      * @brief area
      * Returns the area of the shape.

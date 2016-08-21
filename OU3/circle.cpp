@@ -17,14 +17,17 @@ Circle::Circle( double x, double y, double radie){
 }
 
 void Circle::print(){
+        cout << getPrintString() << endl;
+}
+
+string Circle::getPrintString(){
     string output = "CIRCLE: (";
     output += utility::doubleToStringDecimalPlaces(m_X, 0) + ", ";
     output += utility::doubleToStringDecimalPlaces(m_Y, 0) + ")";
     output += " ";
     output += utility::doubleToStringDecimalPlaces(m_Radius, 0);
+    return output;
 
-
-        cout << output << endl;
 }
 
     double Circle::calculateArea(){

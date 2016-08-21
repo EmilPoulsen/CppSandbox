@@ -8,6 +8,9 @@ class ShapePtr
 public:
     ShapePtr();
     ShapePtr(Shape* shape);
+    friend std::ostream & operator<<(std::ostream& os, const ShapePtr& p);
+    Shape* getShape() const;
+    std::string print() const;
     ~ShapePtr();
 private:
     Shape* m_pShape;

@@ -23,6 +23,10 @@ Polygon::Polygon( double x, double y, Vertex *varr, int num){
 }
 
 void Polygon::print(){
+        cout << getPrintString() << endl;
+}
+
+string Polygon::getPrintString(){
     string output = "POLYGON: (";
     output += utility::doubleToStringDecimalPlaces(m_X, 0) + ",";
     output += utility::doubleToStringDecimalPlaces(m_Y, 0) + ") ";
@@ -36,10 +40,7 @@ void Polygon::print(){
                     + "," + vertices[i].getYString(0) + ") ";
         }
         output += "}";
-        cout << output << endl;
-
-
-            //cout << "hi from polygon" << endl;
+        return output;
 }
 
 double Polygon::calculateArea(){

@@ -18,6 +18,10 @@ Rectangle::Rectangle( double x, double y, double width, double height){
 
 void Rectangle::print(){
 
+    cout << getPrintString() << endl;
+}
+
+string Rectangle::getPrintString(){
     string output = "RECTANGLE: (";
 
     output += utility::doubleToStringDecimalPlaces(m_X, 0) + ", ";
@@ -26,10 +30,8 @@ void Rectangle::print(){
             + ","
             + utility::doubleToStringDecimalPlaces(m_Height, 0)
             + ")";
+    return output;
 
-
-
-    cout << output << endl;
 }
 
 double Rectangle::calculateArea(){

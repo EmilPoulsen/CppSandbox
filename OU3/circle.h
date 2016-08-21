@@ -9,6 +9,7 @@ public:
     Circle();
     Circle( double x, double y, double radie);
     void print();
+    string getPrintString();
     double calculateArea();
     Shape *clone ();
 private:

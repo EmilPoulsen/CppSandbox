@@ -2,7 +2,7 @@
 #define POLYGON_H
 #include "shape.h";
 #include "vertex.h";
-
+#include <string>
 
 class Polygon : public Shape
 {
@@ -10,8 +10,10 @@ public:
     Polygon();
     Polygon( double x, double y, Vertex *varr, int num);
     void print();
-        double calculateArea();
+    std::string getPrintString();
+    double calculateArea();
     Shape *clone ();
+
 private:
     Vertex *vertices;
     double calcArea() const;
