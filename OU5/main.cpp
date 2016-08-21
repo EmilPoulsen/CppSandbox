@@ -31,32 +31,22 @@ int main(int argc, char *argv[])
     shapevec.push_back( ShapePtr(new Rectangle(4, 10, 2, 4)) );
     shapevec.push_back( ShapePtr(new Point(6,7,1)) );
 
-    string output = "‪C:\\cpp\\output.txt";
-    ofstream os(output); //os("fil.dat");
+    string file = "bbb.txt";//"‪C:\\cpp\\aaa.txt";
+    ofstream os(file); //os("fil.dat");
 
     //////printing to console
-    std::ostream_iterator<ShapePtr> out_it (std::cout,"\n");
-    std::copy ( shapevec.begin(), shapevec.end(), out_it );
+    //std::ostream_iterator<ShapePtr> out_it (std::cout,"\n");
+    //std::copy ( shapevec.begin(), shapevec.end(), out_it );
     //////
-//    ostream_iterator<const ShapePtr> shapeout(os,"\n");
-//    copy( shapevec.begin(), shapevec.end(), shapeout);
-//    os.close();
-
-
-    /*
-
-    ofstream os(output); //os("fil.dat");
-
     ostream_iterator<const ShapePtr> shapeout(os,"\n");
     copy( shapevec.begin(), shapevec.end(), shapeout);
     os.close();
-    */
-        /*
 
-    ifstream is("fil.dat");
+    ifstream is(file);//ifstream is("fil.dat");
     istream_iterator<ShapePtr> shapein(is), endofshapein;
 
     list<ShapePtr> shapelist(shapein, endofshapein );
+    /*
     for (list<ShapePtr>::iterator it = shapelist.begin();
     it != shapelist.end(); it++)
     cout << *it << endl;
