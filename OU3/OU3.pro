@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     polygon.cpp \
     shapelist.cpp \
     vertex.cpp \
-    node.cpp
+    node.cpp \
+    ../OU2/utility.cpp
 
 HEADERS += \
     shape.h \
@@ -21,4 +22,5 @@ HEADERS += \
     polygon.h \
     shapelist.h \
     vertex.h \
-    node.h
+    node.h \
+    ../OU2/utility.h
