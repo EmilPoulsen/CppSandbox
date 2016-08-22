@@ -51,16 +51,16 @@ Shape* ShapePtr::createShapeFromString(string s){
     string type = s.substr(0,3);
     Shape* newShape;
     if(type == "POL"){
-        //newShape = createPolygon(s);
+        newShape = createPolygon(s);
     }
     else if(type == "CIR"){
         newShape = createCircle(s);
     }
     else if(type == "REC"){
-
+        newShape = createRectangle(s);
     }
     else if(type == "POI"){
-
+        newShape = createPoint(s);
     }
     else{
         newShape = nullptr;
@@ -97,7 +97,7 @@ Shape* ShapePtr::createPolygon(string s){
            string currVertex = vertices.substr(iStart, iEnd - iStart + 1);
            double currX, currY;
            getCoordinatesFromString(currVertex, currX,currY);
-           Vertex v(0,0); //create the vertex
+           Vertex v(currX,currY); //create the vertex
            vList.push_back(v); //add to list
            if(iEnd + 2 >= vertices.length()){
                allVerticesFound = true;
@@ -125,24 +125,51 @@ Shape* ShapePtr::createPolygon(string s){
 
 //CIRCLE: (5,5) 4
 Shape* ShapePtr::createCircle(string s){
-    /*
-    double x = atof(s.substr(9,10).c_str());
-    double y = atof(s.substr(12,13).c_str());
-    double r = atof(s.substr(15,16).c_str());
-    return new Circle(x, y, r);
-    */
+    //get the radius in the last position of the input string.
+    string sRadius = s.substr(s.length() - 1, 1);
+    double r = atof(sRadius.c_str());
+    int vStart = s.find_first_of("(");
+    int vEnd = s.find_first_of(")");
+    string currVertex = s.substr(vStart, vEnd - vStart + 1);
+    double x, y;
+    getCoordinatesFromString(currVertex, x,y);
+    // cout << currVertex << endl;
+     return new Circle(x, y, r);
 }
+
 
 //RECTANGLE: (4,10) (2,4)
 Shape* ShapePtr::createRectangle(string s){
-    double x = atof(s.substr(12,13).c_str());
-    double y = atof(s.substr(12,13).c_str());
-
-
-    //Rectangle( double x, double y, double width, double height);
+    double x, y, width, height;
+    for(int i = 0; i < 2; i++){ //same procedure for both coordinates and dimesion, so why not loop it..
+        int iStart = s.find_first_of("(");
+        int iEnd = s.find_first_of(")");
+        string currVertex = s.substr(iStart, iEnd - iStart + 1);
+        //cout << currVertex << endl;
+        if(i == 0){
+            getCoordinatesFromString(currVertex, x,y);
+            s = s.substr(iEnd + 2, s.length() - iEnd - 2);
+        }
+        else if(i == 1){
+            getCoordinatesFromString(currVertex, width,height);
+            break;
+        }
+        else{}//should never hit this point.
+    }
+    return new Rectangle(x, y, width, height);
 }
-//POINT: (6,7) 1
-Shape* ShapePtr::createPoint(string s){
 
+//POINT: (6,7) 1
+Shape* ShapePtr::createPoint(string s){ //essentially the same code as createCircle
+    //get the radius in the last position of the input string.
+    string sRadius = s.substr(s.length() - 1, 1);
+    double size = atof(sRadius.c_str());
+    int vStart = s.find_first_of("(");
+    int vEnd = s.find_first_of(")");
+    string currVertex = s.substr(vStart, vEnd - vStart + 1);
+    double x, y;
+    getCoordinatesFromString(currVertex, x,y);
+    // cout << currVertex << endl;
+     return new Point(x, y, size);
 }
 

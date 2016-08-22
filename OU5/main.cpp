@@ -46,12 +46,13 @@ int main(int argc, char *argv[])
     istream_iterator<ShapePtr> shapein(is), endofshapein;
 
     list<ShapePtr> shapelist(shapein, endofshapein );
-    /*
+
     for (list<ShapePtr>::iterator it = shapelist.begin();
     it != shapelist.end(); it++)
     cout << *it << endl;
-    shapevec.insert( shapevec.end(), shapelist.begin(), shapelist.end() );
 
+    shapevec.insert( shapevec.end(), shapelist.begin(), shapelist.end() );
+    /*
     shapevec.erase(remove_if( shapevec.begin(), shapevec.end(),
             CloseTo( Vertex(6,7))),
             shapevec.end());
