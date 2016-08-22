@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include<math.h> //for pow
 
 using namespace std;
 
@@ -71,4 +72,23 @@ std::string Vertex::getYString(int decimals){
     stream << std::fixed << setprecision(decimals) << this->Y;
     string s = stream.str();
     return s;
+}
+
+bool Vertex::isCloseTo(Vertex other, double tolerance){
+    return distanceTo(other) < tolerance;
+}
+
+/**
+ * @brief Vertex::distanceTo
+ * Euclidean distance
+ * @param other
+ * @return
+ */
+double Vertex::distanceTo(Vertex other)
+{
+    double x = X - other.getX(); //calculating number to square in next step
+    double y = Y - other.getY();
+    double dist = pow(x, 2) + pow(y, 2);       //calculating Euclidean distance
+    dist = sqrt(dist);
+    return dist;
 }

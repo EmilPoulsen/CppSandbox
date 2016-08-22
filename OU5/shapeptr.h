@@ -18,9 +18,13 @@ public:
     static Shape* createRectangle(string s);
     static Shape* createPoint(string s);
     static void getCoordinatesFromString(string s, double &x, double &y);
+    bool isCloseTo(Vertex other, double tolerance);
     ~ShapePtr();
+    static int numshapes;
 private:
     Shape* m_pShape;
+    void incrementShapeCounter();
+    void decrementShapeCounter();
 };
 
 #endif // SHAPEPTR_H

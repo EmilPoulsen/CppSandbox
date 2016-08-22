@@ -14,6 +14,8 @@ public:
     double getY() const;
     std::string getXString(int decimals) ;
     std::string getYString(int decimals) ;
+    bool isCloseTo(Vertex other, double tolerance);
+    double distanceTo(Vertex other);
     //string testString;
 private:
     double X;

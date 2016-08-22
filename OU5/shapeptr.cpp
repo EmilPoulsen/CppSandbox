@@ -10,20 +10,35 @@
 #include <algorithm>
 
 
+int ShapePtr::numshapes;
+
 ShapePtr::ShapePtr()
     : m_pShape(0)
 {
-
+    incrementShapeCounter();
 }
 
 ShapePtr::ShapePtr(Shape* shape)
     : m_pShape(shape)
 {
+    incrementShapeCounter();
 }
 
 ShapePtr::~ShapePtr(){
+    decrementShapeCounter();
     //delete m_pShape;
 }
+
+void ShapePtr::incrementShapeCounter()
+{
+    numshapes++;
+}
+
+void ShapePtr::decrementShapeCounter()
+{
+    numshapes--;
+}
+
 
 Shape* ShapePtr::getShape() const{
     return m_pShape;
@@ -171,5 +186,9 @@ Shape* ShapePtr::createPoint(string s){ //essentially the same code as createCir
     getCoordinatesFromString(currVertex, x,y);
     // cout << currVertex << endl;
      return new Point(x, y, size);
+}
+
+bool ShapePtr::isCloseTo(Vertex other, double tolerance){
+    return m_pShape->IsCloseToVertex(other, 1);
 }
 

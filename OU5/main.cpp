@@ -16,6 +16,19 @@
 
 using namespace std;
 
+class CloseTo{
+public:
+    CloseTo(Vertex v){
+        m_Vertex = v;
+    }
+
+    bool operator()(ShapePtr shapePointer){
+        return shapePointer.isCloseTo(m_Vertex,1);
+    }
+private:
+    Vertex m_Vertex;
+};
+
 int main(int argc, char *argv[])
 {
 
@@ -52,21 +65,27 @@ int main(int argc, char *argv[])
     cout << *it << endl;
 
     shapevec.insert( shapevec.end(), shapelist.begin(), shapelist.end() );
-    /*
+    //position - Position in the vector where the new elements are inserted.
+    //terators specifying a range of elements. Copies of the elements in the
+    //range [first,last) are inserted at position (in the same order).
+
     shapevec.erase(remove_if( shapevec.begin(), shapevec.end(),
             CloseTo( Vertex(6,7))),
             shapevec.end());
 
+
     ostream_iterator<const ShapePtr> shapecout(cout,"\n");
     cout << shapevec.size() << endl;
-    cerr << ShapePtr:: numshapes << endl; // numshapes är ett statiskt attribut
+
+    cerr << ShapePtr::numshapes << endl; // numshapes är ett statiskt attribut
                         // som håller reda på antalet objekt genom
                         // inkrement i konstruktorer och
                         // dekrement i destruktorn
+
     copy( shapevec.begin(), shapevec.end(), shapecout);
-    */
 
 
-    cout << "Hello World!" << endl;
+
+    //cout << "Hello World!" << endl;
     return 0;
 }
