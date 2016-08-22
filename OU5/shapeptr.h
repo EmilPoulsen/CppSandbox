@@ -17,6 +17,7 @@ public:
     static Shape* createCircle(string s);
     static Shape* createRectangle(string s);
     static Shape* createPoint(string s);
+    static void getCoordinatesFromString(string s, double &x, double &y);
     ~ShapePtr();
 private:
     Shape* m_pShape;

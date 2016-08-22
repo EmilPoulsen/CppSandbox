@@ -22,7 +22,7 @@ void Point::print(){
 
 string Point::getPrintString(){
     string output = "POINT: (";
-    output += utility::doubleToStringDecimalPlaces(m_X, 0) + ", ";
+    output += utility::doubleToStringDecimalPlaces(m_X, 0) + ",";
     output += utility::doubleToStringDecimalPlaces(m_Y, 0) + ")";
     output += " "
             + utility::doubleToStringDecimalPlaces(m_Size, 0);

@@ -24,7 +24,7 @@ void Rectangle::print(){
 string Rectangle::getPrintString(){
     string output = "RECTANGLE: (";
 
-    output += utility::doubleToStringDecimalPlaces(m_X, 0) + ", ";
+    output += utility::doubleToStringDecimalPlaces(m_X, 0) + ",";
     output += utility::doubleToStringDecimalPlaces(m_Y, 0) + ")";
     output += " (" + utility::doubleToStringDecimalPlaces(m_Width, 0)
             + ","

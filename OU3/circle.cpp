@@ -22,7 +22,7 @@ void Circle::print(){
 
 string Circle::getPrintString(){
     string output = "CIRCLE: (";
-    output += utility::doubleToStringDecimalPlaces(m_X, 0) + ", ";
+    output += utility::doubleToStringDecimalPlaces(m_X, 0) + ",";
     output += utility::doubleToStringDecimalPlaces(m_Y, 0) + ")";
     output += " ";
     output += utility::doubleToStringDecimalPlaces(m_Radius, 0);
