@@ -29,6 +29,35 @@ private:
     Vertex m_Vertex;
 };
 
+struct SortByAreaKey
+{
+    inline bool operator() (const ShapePtr& shape1, const ShapePtr& shape2)
+    {
+        return (shape1.getArea() < shape2.getArea());
+    }
+};
+
+struct SortByXkey
+{
+    inline bool operator() (const ShapePtr& shape1, const ShapePtr& shape2)
+    {
+        return (shape1.getX() < shape2.getY());
+    }
+};
+
+struct SortByYkey
+{
+    inline bool operator() (const ShapePtr& shape1, const ShapePtr& shape2)
+    {
+        return (shape1.getY() < shape2.getY());
+    }
+};
+
+
+
+
+
+
 int main(int argc, char *argv[])
 {
 
@@ -63,6 +92,17 @@ int main(int argc, char *argv[])
     for (list<ShapePtr>::iterator it = shapelist.begin();
     it != shapelist.end(); it++)
     cout << *it << endl;
+
+    /////// SORT BY AREA AND PRINT ////////
+    cout << "start of sorting stuff" << endl;
+    std::sort(shapevec.begin(), shapevec.end(), SortByAreaKey);
+    //std::sort(shapevec.begin(), shapevec.end(), SortByXkey);
+    //std::sort(shapevec.begin(), shapevec.end(), SortByYkey);
+    for (list<ShapePtr>::iterator it = shapelist.begin();
+    it != shapelist.end(); it++)
+    cout << *it << endl;
+
+
 
     shapevec.insert( shapevec.end(), shapelist.begin(), shapelist.end() );
     //position - Position in the vector where the new elements are inserted.

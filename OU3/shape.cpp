@@ -27,6 +27,16 @@ bool Shape::IsCloseToVertex(const Vertex &v, double tol) const{
         return false;
 }
 
+double Shape::getX()
+{
+    return m_X;
+}
+
+double Shape::getY()
+{
+    return m_Y;
+}
+
 
 
 

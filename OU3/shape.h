@@ -38,10 +38,11 @@ public:
     virtual double calculateArea() = 0;
 
     void copyBaseProperties(Shape& other);
-
     virtual Shape *clone () = 0;
-
     bool IsCloseToVertex(const Vertex &v, double tol) const;
+    double getX();
+    double getY();
+
 };
 
 #endif // SHAPE_H

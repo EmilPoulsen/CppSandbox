@@ -19,8 +19,13 @@ public:
     static Shape* createPoint(string s);
     static void getCoordinatesFromString(string s, double &x, double &y);
     bool isCloseTo(Vertex other, double tolerance);
+    double getArea();
+    double getX();
+    double getY();
     ~ShapePtr();
     static int numshapes;
+
+
 private:
     Shape* m_pShape;
     void incrementShapeCounter();

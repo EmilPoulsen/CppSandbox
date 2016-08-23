@@ -192,3 +192,15 @@ bool ShapePtr::isCloseTo(Vertex other, double tolerance){
     return m_pShape->IsCloseToVertex(other, 1);
 }
 
+double ShapePtr::getArea(){
+    return m_pShape->area();
+}
+
+double ShapePtr::getX(){
+    return m_pShape->getX();
+}
+
+double ShapePtr::getY(){
+    return m_pShape->getY();
+}
+
