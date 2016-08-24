@@ -19,7 +19,7 @@ Polygon::Polygon()
   * @param arrSize
   * the amount of vertices in the polygon
   */
- Polygon::Polygon(Vertex *v1, int arrSize)
+ Polygon::Polygon(Vertex v1[], int arrSize)
  {
      numOfVertices = arrSize;
      vertices = new Vertex[arrSize];
@@ -30,6 +30,19 @@ Polygon::Polygon()
          vertices[i] = v1[i];
      }
  }
+
+ /*
+ Polygon::Polygon(const Polygon &other)
+ {
+     numOfVertices = other.numOfVertices;
+     vertices = new Vertex[other.numOfVertices];
+
+     for (int i = 0; i < other.numOfVertices; ++i) {
+         vertices[i] = other.vertices[i];
+     }
+
+ }
+ */
 
  /**
   * @brief Polygon::calcArea
@@ -64,7 +77,7 @@ Polygon::Polygon()
   * @param v
   * The vertex to add
   */
- void Polygon:: add(Vertex &v){
+ void Polygon:: add(Vertex v){
 
      Vertex *newArr = new Vertex[numOfVertices + 1];
 

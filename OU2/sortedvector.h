@@ -12,54 +12,15 @@ using namespace std;
  */
 template<class T, int sz>
 class SortedVector{
-
 public:
-    /**
-     * @brief SortedVector
-     * Default constructor
-     */
     SortedVector();
-
-    /**
-     * @brief add
-     * Add an item to the sorted array
-     * @param v
-     * The item to add
-     * @return
-     * Returns true if successful, false if the array is full.
-     */
     bool add(const T& v);
-
-    /**
-     * @brief median
-     * Calculates the median of the array
-     * @return
-     * Returns the median object
-     */
     T& median();
-
-    /**
-     * @brief removeLarger
-     * Removes the items in the array larger than a threshold value
-     * @param v
-     * The threshold value
-     */
     void removeLarger(const T& v);
-
-    /**
-     * @brief print
-     * Prints the items in the array. Calls overloaded operator << of the object
-     * @param os
-     * The colsole out stream
-     */
     void print( ostream &os );
+    ~SortedVector();
 
-    /**
-     * Destructor
-     */
-    ~SortedVector(){
-        //nothing to do here so far..
-    }
+
 
 private:
     int size; //The real size of the array
@@ -67,12 +28,23 @@ private:
     T arr[sz]; //The array of objects
 };
 
-
+/**
+ * @brief SortedVector
+ * Default constructor
+ */
 template<class T, int sz>
 SortedVector<T, sz>::SortedVector(): size(sz){//, arr(new T[sz]){
     incr = 0; //initialize to zero
 }
 
+/**
+ * @brief add
+ * Add an item to the sorted array
+ * @param v
+ * The item to add
+ * @return
+ * Returns true if successful, false if the array is full.
+ */
 template<class T, int sz>
 bool SortedVector<T, sz>::add(const T& v){
     //the array is full
@@ -93,7 +65,12 @@ bool SortedVector<T, sz>::add(const T& v){
     }
 }
 
-
+/**
+ * @brief print
+ * Prints the items in the array. Calls overloaded operator << of the object
+ * @param os
+ * The colsole out stream
+ */
 template<class T, int sz>
 void SortedVector<T, sz>::print( ostream &os ){
     for(int i = 0; i < incr; i++){
@@ -101,6 +78,12 @@ void SortedVector<T, sz>::print( ostream &os ){
     }
 }
 
+/**
+ * @brief median
+ * Calculates the median of the array
+ * @return
+ * Returns the median object
+ */
 template<class T, int sz>
 T& SortedVector<T, sz>::median(){
     int middleIndex = (incr - 1) / 2; //calculate the mid index
@@ -109,6 +92,12 @@ T& SortedVector<T, sz>::median(){
 
 }
 
+/**
+ * @brief removeLarger
+ * Removes the items in the array larger than a threshold value
+ * @param v
+ * The threshold value
+ */
 template<class T, int sz>
 void SortedVector<T, sz>::removeLarger(const T& v){
     for(int i = 0; i < incr; i++){
@@ -124,5 +113,12 @@ void SortedVector<T, sz>::removeLarger(const T& v){
     }
 }
 
+/**
+ * Destructor
+ */
+template<class T, int sz>
+SortedVector<T, sz>::~SortedVector(){
+    //nothing to do here so far..
+}
 
 #endif // SORTEDVECTOR_H

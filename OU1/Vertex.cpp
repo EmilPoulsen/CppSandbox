@@ -12,8 +12,8 @@ using namespace std;
 Vertex::Vertex()
 {
     //this->testString = "rufus test";
-    X = 0;
-    Y = 0;
+    X = 99;
+    Y = 99;
 }
 
 Vertex::Vertex(const Vertex& other ) :
