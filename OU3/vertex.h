@@ -16,7 +16,6 @@ public:
     std::string getYString(int decimals) ;
     bool isCloseTo(Vertex other, double tolerance);
     double distanceTo(Vertex other);
-    //string testString;
 private:
     double X;
     double Y;

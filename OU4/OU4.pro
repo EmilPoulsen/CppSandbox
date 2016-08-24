@@ -9,7 +9,6 @@ SOURCES += main.cpp \
     journal.cpp \
     compactdisc.cpp \
     libraryapp.cpp \
-    libraryhandler.cpp \
     enums.cpp \
     guilibrary.cpp
 
@@ -19,6 +18,5 @@ HEADERS += \
     journal.h \
     compactdisc.h \
     libraryapp.h \
-    libraryhandler.h \
     enums.h \
     guilibrary.h

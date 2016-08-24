@@ -11,7 +11,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-
     ShapeList list;
     Vertex varr[] = { Vertex(0,0), Vertex(10,0),
     Vertex(5,2), Vertex(5,5) };
@@ -33,6 +32,5 @@ int main(int argc, char *argv[])
     cout << " Totalyta: " << list.area() << endl;
     list2.print();
     cout << " Totalyta: " << list2.area() << endl;
-//        cout << " Hello world " << endl;
     return 0;
 }

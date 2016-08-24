@@ -9,8 +9,8 @@ public:
     Rectangle( double x, double y, double width, double height);
     void print();
     string getPrintString();
-        double calculateArea();
-            Shape *clone ();
+     double calculateArea();
+    Shape *clone ();
 private:
     double m_Width;
     double m_Height;

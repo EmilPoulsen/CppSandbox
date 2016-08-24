@@ -13,12 +13,10 @@ public:
     std::string getPrintString();
     double calculateArea();
     Shape *clone ();
-
 private:
     Vertex *vertices;
     double calcArea() const;
     int numOfVertices;
-
 };
 
 #endif // POLYGON_H
