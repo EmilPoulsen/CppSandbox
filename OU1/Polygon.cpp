@@ -170,17 +170,7 @@ Polygon::Polygon()
  string Polygon::print() const {
      string output = "{";
      for(int i = 0; i < numOfVertices; i++){
-         //Vertex currVert = vertices[i];
-         //output += "hello!";
-         //output = output + currVert.testString;
-         //output = output + currVert.getYString(0);
-         //double x = currVert.getX();
-         //double y = currVert.getY();
-         //output += to_string(vertices[i].getX());
-         //output = output + "(" + currVert.getXString(0) + "," + currVert.getYString(0) + ") ";
          output = output + "(" + vertices[i].getXString(0) + "," + vertices[i].getYString(0) + ") ";
-
-         //output = output + "(" + to_string(currVert.getX()) + "," + to_string(currVert.getY()) + ") ";
      }
      output += "}";
      return output;
@@ -188,44 +178,51 @@ Polygon::Polygon()
 
  /**
   * @brief Polygon::~Polygon
-  * Deconstructor
+  * Deconstructor. Deletes all vertices
   */
  Polygon::~Polygon()
  {
      delete [] vertices;
  }
 
+ /**
+ * @brief operator <<
+ * outputs print() to the console
+ * @param os
+ * @param v
+ * @return
+ */
 std::ostream & operator<<(std::ostream& os, const Polygon& v){
      os << v.print();
      return os;
  }
 
+/**
+ * @brief operator <
+ * Compares the areas of the polygons
+ * @param c1
+ * first polygon
+ * @param c2
+ * second polygon
+ * @return
+ */
 bool operator< (const Polygon &c1, const Polygon &c2)
 {
     return (c1.area()< c2.area());
 }
 
+/**
+ * @brief operator >
+ * Compares the areas of the polygons
+ * @param c1
+ * first polygon
+ * @param c2
+ * second polygon
+ * @return
+ */
 bool operator> (const Polygon &c1, const Polygon &c2)
 {
     return (c1.area()> c2.area());
 }
-
-//ostream & operator << (ostream & os, const Polygon & m) {
-
-//    return os.print << print();
-// }
-
-
-// std::ostream &operator<<(std::ostream &os, Polygon const &m) {
-//     return os << m.print();//m.print();
-// }
-
-
-
-
-
-// std::ostream& operator<<(std::ostream &strm, Polygon const &pol) {
-//   return strm << pol.print();
-// }
 
 
