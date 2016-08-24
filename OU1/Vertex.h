@@ -9,11 +9,12 @@ class Vertex
 public:
     Vertex();
     Vertex(double x, double y);
+    Vertex(const Vertex& other );
     ~Vertex(); // destruktor
-    double getX();
-    double getY();
-    std::string getXString(int decimals) ;
-    std::string getYString(int decimals) ;
+    double getX() const;
+    double getY() const;
+    std::string getXString(int decimals) const;
+    std::string getYString(int decimals) const;
     //string testString;
 private:
     double X;

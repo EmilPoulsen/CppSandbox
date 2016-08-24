@@ -16,6 +16,10 @@ Vertex::Vertex()
     Y = 0;
 }
 
+Vertex::Vertex(const Vertex& other ) :
+   X(other.getX()), Y(other.getY())
+{}
+
 /**
  * @brief Vertex::Vertex
  * Constructor with x and y value
@@ -36,7 +40,7 @@ Vertex::Vertex(double x, double y)
  */
 Vertex::~Vertex()
 {
-    //cout << "Nu försvinner punkten med koordinaterna " << int(X) << int(Y) << endl;
+    //cout << "Nu försvinner punkten med koordinaterna " << int(X) << ", " << int(Y) << endl;
 }
 
 /**
@@ -45,7 +49,7 @@ Vertex::~Vertex()
  * @return
  * x value
  */
-double Vertex:: getX(){
+double Vertex:: getX() const{
     return X;
 }
 
@@ -55,22 +59,22 @@ double Vertex:: getX(){
  * @return
  * y value
  */
-double Vertex:: getY(){
+double Vertex:: getY() const{
     return Y;
 }
 
-std::string Vertex::getXString(int decimals){
+std::string Vertex::getXString(int decimals) const{
     std::stringstream stream;
     //stream << "X value";
-    stream << std::fixed << setprecision(decimals) << this->X;
+    stream << std::fixed << setprecision(decimals) << X;
     string s = stream.str();
     return s;
 }
 
-std::string Vertex::getYString(int decimals){
+std::string Vertex::getYString(int decimals) const{
     std::stringstream stream;
     //stream << "Y value";
-    stream << std::fixed << setprecision(decimals) << this->Y;
+    stream << std::fixed << setprecision(decimals) << Y;
     string s = stream.str();
     return s;
 }

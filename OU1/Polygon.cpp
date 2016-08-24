@@ -64,7 +64,7 @@ Polygon::Polygon()
   * @param v
   * The vertex to add
   */
- void Polygon:: add(Vertex v){
+ void Polygon:: add(Vertex &v){
 
      Vertex *newArr = new Vertex[numOfVertices + 1];
 
@@ -170,6 +170,7 @@ Polygon::Polygon()
  string Polygon::print() const {
      string output = "{";
      for(int i = 0; i < numOfVertices; i++){
+         //output += vertices[i].getXString(1) + ",";
          output = output + "(" + vertices[i].getXString(0) + "," + vertices[i].getYString(0) + ") ";
      }
      output += "}";

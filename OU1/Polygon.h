@@ -9,7 +9,7 @@ public:
     Polygon();
     Polygon(Vertex v1[], int arrSize);
 
-    void add(Vertex v);
+    void add(Vertex &v);
     string print() const;
     double area() const;
     double minx();
