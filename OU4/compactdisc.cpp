@@ -1,7 +1,7 @@
 #include "compactdisc.h"
 
-CompactDisc::CompactDisc()
-{
+//TODO: add comments and documentation
+CompactDisc::CompactDisc(){
 
 }
 

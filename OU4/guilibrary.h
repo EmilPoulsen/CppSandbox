@@ -26,10 +26,7 @@ public:
     bool initializeBorrowProceedure(int &id, int &borrower);
     bool initializeReturnProcedure(int &id);
     bool str2int (int &i, char const *s);
-
 private:
-
-
 };
 
 #endif // GUILIBRARY_H

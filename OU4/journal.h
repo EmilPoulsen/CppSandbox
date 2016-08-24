@@ -7,9 +7,7 @@ class Journal : public LendingItem
 {
 public:
     Journal();
-
     Journal(std::string title, std::string volume, int id);
-
     std::string getTitle();
     std::string getVolume();
     std::string getOriginator();

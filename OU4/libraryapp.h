@@ -1,6 +1,5 @@
 #ifndef LIBRARYAPP_H
 #define LIBRARYAPP_H
-#include "libraryhandler.h";
 using namespace std;
 #include <string>
 #include <vector>
@@ -14,26 +13,27 @@ public:
     LibraryApp();
     void Run();
     string ExePath();
-
-
-    //enum Days { Saturday,Sunday,Tuesday,Wednesday,Thursday,Friday};
-
+    void setDatabasePath(string s);
     ~LibraryApp();
-
 private:
-    void ReadLibraryDb(string path);
+     //////////////////////////////////////////
+    //////////////// CLASS FIELDS /////////////
+    ///////////////////////////////////////////
+    int m_IdCount;
+    string m_Path;
+    GuiLibrary m_GuiLibrary;
+    vector<LendingItem*> m_LibraryDatabase;
+
+    //////////////////////////////////////////
+   //////////////// METHODS /// //////////////
+   ///////////////////////////////////////////
+    bool ReadLibraryDb(string path);
     vector<string> ReadTextFile(string path);
     vector<LendingItem> createLendingItemsFromTxt(vector<string> database);
-    LibraryHandler _handler;
     Enums::ItemTypes txtLineIsNewLendingItem(string &line);
     LendingItem* createNewLendingItem(vector<string> &database, int &startrow, int &endrow, Enums::ItemTypes type, int id);
     int generateNewId();
-    int m_IdCount;
-    string m_Path;
-
     void runMainLoop();
-    GuiLibrary m_GuiLibrary;
-    vector<LendingItem*> m_LibraryDatabase;
     void processUserInput(string &input);
     void startSearchDialog();
     vector<LendingItem*> searchInLibrary(string &searchString, string &TitleorAuthor);
@@ -52,11 +52,6 @@ private:
     void returnAnObject();
     bool userWantsToSaveFile();
     void saveFile();
-
-
-    //std::shared_ptr<GuiLibrary> m_GuiLibrary;
 };
-
-
 
 #endif // LIBRARYAPP_H

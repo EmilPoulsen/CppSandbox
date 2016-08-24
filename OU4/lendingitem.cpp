@@ -1,7 +1,6 @@
 #include "lendingitem.h"
 
-LendingItem::LendingItem()
-{
+LendingItem::LendingItem(){
 
 }
 

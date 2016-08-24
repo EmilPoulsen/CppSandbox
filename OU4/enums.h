@@ -4,13 +4,6 @@
 
 class Enums{
 public:
-    /*
-    enum BookType {
-        NonFiction,
-        Fiction
-    };
-    */
-
     enum ItemTypes{
         Fiction,
         NonFiction,
@@ -19,7 +12,6 @@ public:
         Journal,
         Last
     };
-
     static const std::string ToString(ItemTypes v)
     {
         switch (v)
@@ -32,10 +24,6 @@ public:
             default:      return "[Unknown type]";
         }
     }
-
-
-
-    //fiction, non fiction, cd, jornal
 };
 
 #endif // ENUMS_H

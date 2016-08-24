@@ -3,25 +3,18 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
-
 using namespace std;
 
-GuiLibrary::GuiLibrary()
-{
-
-
+//TODO: add comments and documentation
+GuiLibrary::GuiLibrary(){
 }
 
 void GuiLibrary::startGui(){
     printUserOptions();
     readUserInput();
-
-
-
 }
 
 void GuiLibrary::printUserOptions(){
-
     cout<< "Choose one of X/C/F/N/J/H(Help)/S/B/R/Q" << endl;
 }
 
@@ -29,7 +22,6 @@ std::string GuiLibrary::readUserInput(){
     std::string s;
     cin >> s;
     convertStringToUpper(s);
-    //std::transform(s.begin(), s.end(),s.begin(), ::toupper);
     return s;
 }
 
@@ -37,12 +29,9 @@ void GuiLibrary::convertStringToUpper(std::string &str){
     std::transform(str.begin(), str.end(),str.begin(), ::toupper);
 }
 
-
 string GuiLibrary::askTitleOrAuthor(){
-
     //loop will quit when acceptable answer is given
-    while(true)
-    {
+    while(true){
         cout << "Search by title (T) or author/artist (A)??";
         string input = readUserInput();
         if(input == "T"){
@@ -75,7 +64,6 @@ void GuiLibrary::printHelp(){
     cout << "R - return an object" << endl;
     cout << "Q - quit the program" << endl;
 }
-
 
 void GuiLibrary::printStringVectorOnSeparateLines(const vector<string> &outputVector){
     for(int i = 0; i < outputVector.size(); i++){
@@ -144,9 +132,7 @@ bool GuiLibrary::initializeBorrowProceedure(int &id, int &borrower){
     return true;
 }
 
-bool GuiLibrary::str2int (int &i, char const *s)
-{
-
+bool GuiLibrary::str2int (int &i, char const *s){
     char              c;
     std::stringstream ss(s);
     ss >> i;

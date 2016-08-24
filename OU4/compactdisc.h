@@ -13,12 +13,10 @@ public:
     std::string getTitle();
     std::string getOriginator();
     std::string getExtraInfo();
-
 private:
     std::string m_Artist;
     std::string m_Title;
     std::string m_RunTime;
-
 };
 
 #endif // COMPACTDISC_H

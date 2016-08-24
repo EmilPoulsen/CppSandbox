@@ -9,28 +9,31 @@
 #include "book.h"
 #include "journal.h"
 #include <algorithm>
-
 using namespace std;
 
-LibraryApp::LibraryApp()
-{
+//TODO: add comments and documentation
+LibraryApp::LibraryApp(){
+    m_Path = "";
     m_IdCount = 0;
 }
 
 void LibraryApp::Run(){
-    string fileLoc = "C:\\Users\\Emil\\Desktop\\input.txt";
-    m_Path = fileLoc;
-    //string s2 = ExePath();
-    //cout << s2 << endl;
-    ReadLibraryDb(m_Path);
-    //m_GuiLibrary = new GuiLibrary();
+    if(m_Path == ""){
+        m_GuiLibrary.printString("The path has not been set and the program cannot run.");
+        return;
+    }
+    if(!ReadLibraryDb(m_Path)){
+        m_GuiLibrary.printString("Either the database is empty or the file directory is incorrect. Program cannot run.");
+        return;
+    }
     runMainLoop();
+}
 
-
+void LibraryApp::setDatabasePath(string s){
+    m_Path = s;
 }
 
 void LibraryApp::runMainLoop(){
-
     bool quitApp = false;
     while(!quitApp){
         m_GuiLibrary.printUserOptions();
@@ -38,14 +41,12 @@ void LibraryApp::runMainLoop(){
         processUserInput(input);
         quitApp = m_GuiLibrary.userSelectedExitOption(input);
     }
-
     if(userWantsToSaveFile())
         saveFile();
-
 }
 
 bool LibraryApp::userWantsToSaveFile(){
-    while(true){
+    while(true){ //loop will quit when user selects an acceptable answer
         m_GuiLibrary.printStringWithoutEndLine("Would you like to save the database? [y/n]");
         string input = m_GuiLibrary.readUserInput();
         if(input == "Y"){
@@ -55,16 +56,12 @@ bool LibraryApp::userWantsToSaveFile(){
             return false;
         }
         else{
-            //acceptableAnswer = false; //just to clarify
             m_GuiLibrary.printInvalidInput(input);
         }
     }
-
 }
 
-
 void LibraryApp::startSearchDialog(){
-
     vector<LendingItem*> foundObjects;
     string titleOrAuthor = m_GuiLibrary.askTitleOrAuthor();
     string searchString = m_GuiLibrary.enterSearchString();
@@ -82,7 +79,6 @@ void LibraryApp::startSearchDialog(){
 void LibraryApp::printFoundObjects(vector<LendingItem*> &foundItems){
     vector<string> outputPerFoundItem;
     string separator = "-----------------------------";
-
     for(int i = 0; i < foundItems.size(); i++){
         outputPerFoundItem.clear();
         outputPerFoundItem.push_back(separator);
@@ -96,11 +92,8 @@ void LibraryApp::printFoundObjects(vector<LendingItem*> &foundItems){
     }
 }
 
-
-
 vector<LendingItem*> LibraryApp::searchInLibrary(string &searchString, string &TitleorAuthor){
     vector<LendingItem*> foundObjects;
-
     for(int i = 0; i < m_LibraryDatabase.size(); i++)
     {
         LendingItem* currObject =   m_LibraryDatabase[i];
@@ -119,20 +112,16 @@ vector<LendingItem*> LibraryApp::searchInLibrary(string &searchString, string &T
             foundObjects.push_back(currObject);
         }
     }
-
     return foundObjects;
 }
 
 bool LibraryApp::stringContainsOtherString(string word, string substring){
     string s2 = word;
     string s1 = substring;
-
     m_GuiLibrary.convertStringToUpper(s1);
     m_GuiLibrary.convertStringToUpper(s2);
     bool found = (s1.find(s2) != std::string::npos);
-
     return found;
-
 }
 
 void LibraryApp::borrowLibraryItem(){
@@ -141,20 +130,16 @@ void LibraryApp::borrowLibraryItem(){
     bool success = m_GuiLibrary.initializeBorrowProceedure(id, borrower);
     if(!success)
         return;
-
     LendingItem* item;
     item = findLendingItemFromIndex(id);
-
     if(item == nullptr){
         m_GuiLibrary.printString("No items with index " + std::to_string(id) + " was found.");
         return;
     }
-
     if(item->getLenderIndex() != 0){
         m_GuiLibrary.printString("Sorry, item with index " + std::to_string(id) + " is currently lent out to someone else.");
         return;
     }
-
     borrowItem(item, borrower);
     m_GuiLibrary.printString("Item with index " + std::to_string(id) + " was successfully lent out to borrower " + std::to_string(borrower));
 }
@@ -185,9 +170,6 @@ LendingItem* LibraryApp::findLendingItemFromIndex(int index, int &indexInVector)
     return nullptr;
 }
 
-
-
-
 void LibraryApp::processUserInput(std::string &input){
     if(input == "X")
         removeAnObjectFromTheLibrary();
@@ -211,15 +193,17 @@ void LibraryApp::processUserInput(std::string &input){
         m_GuiLibrary.printExitMessege();
     else
         m_GuiLibrary.printInvalidInput(input);
-
 }
 
-
- void LibraryApp::ReadLibraryDb(string path){
+ bool LibraryApp::ReadLibraryDb(string path){
     vector<string> database;
      database = ReadTextFile(path);
+     if(database.size() == 0){
+         return false;
+     }
      vector<LendingItem> libraryDatabase;
      libraryDatabase = createLendingItemsFromTxt(database);
+     return true;
  }
 
  vector<LendingItem> LibraryApp:: createLendingItemsFromTxt(vector<string> database){
@@ -241,7 +225,6 @@ void LibraryApp::processUserInput(std::string &input){
                 newLibraryEntity = createNewLendingItem(database, startRowOfObject, endRowOfObject, prevItem, generateNewId());
                 m_LibraryDatabase.push_back(newLibraryEntity);
             }
-
             startRowOfObject = i;
             endRowOfObject = i;
             prevItem = item;
@@ -249,15 +232,12 @@ void LibraryApp::processUserInput(std::string &input){
         else{
             endRowOfObject++;
         }
-
         //for the last item
         if(i == database.size() -1){
             newLibraryEntity = createNewLendingItem(database, startRowOfObject, endRowOfObject, prevItem, generateNewId());
             m_LibraryDatabase.push_back(newLibraryEntity);
         }
-
      }
-
  }
 
  LendingItem* LibraryApp::createNewLendingItem(vector<string> &database, int &startrow, int &endrow, Enums::ItemTypes type, int id){
@@ -290,34 +270,29 @@ void LibraryApp::processUserInput(std::string &input){
  }
 
  Enums::ItemTypes LibraryApp::txtLineIsNewLendingItem(string &line){
-
      for ( int fooInt = Enums::Fiction; fooInt != Enums::Last; fooInt++ )
      {
         Enums::ItemTypes foo = static_cast<Enums::ItemTypes>(fooInt);
         string strEnum = Enums::ToString(foo);
-
         if(line == strEnum)
             return foo;
      }
      return Enums::NonApplicable;
- }
+}
 
 int LibraryApp::generateNewId(){
     m_IdCount++;
     return 1000 + m_IdCount;
 }
 
- vector<string> LibraryApp::ReadTextFile(string path){
+vector<string> LibraryApp::ReadTextFile(string path){
      std::ifstream file(path);
      std::string str;
      vector<string> strVec;
-     while (std::getline(file, str))
-     {
+     while (std::getline(file, str)){
          strVec.push_back(str);
-         //cout << str << endl;
      }
      return strVec;
-
  }
 
  void LibraryApp::insertNewCD(){
@@ -433,18 +408,13 @@ void LibraryApp::addBook(Enums::ItemTypes type){
          m_GuiLibrary.printString("Item with index " + std::to_string(id) + " is available and cannot be returned");
          return;
      }
-
-     //borrowItem(item, borrower);
-
      item->setLenderIndex(0);
      m_GuiLibrary.printString("Item with index " + std::to_string(id) + " was successfully returned");
  }
 
 void LibraryApp::saveFile(){
-    //ofstream myfile (m_Path);
     std::ofstream myfile;
     myfile.open(m_Path, std::ofstream::out | std::ofstream::trunc);
-
     if (myfile.is_open())
       {
         for(int i = 0; i < m_LibraryDatabase.size(); i++){
@@ -464,11 +434,7 @@ void LibraryApp::saveFile(){
       }
       else
         cout << "Unable to modify file";
-
-
 }
-
-
 
 LibraryApp:: ~LibraryApp(){
     //delete the library items
@@ -476,4 +442,3 @@ LibraryApp:: ~LibraryApp(){
        delete m_LibraryDatabase[i];
     }
 }
-

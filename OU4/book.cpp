@@ -1,13 +1,11 @@
 #include "book.h"
-
-Book::Book()
-{
+//TODO: add comments and documentation
+Book::Book(){
 
 }
 
 Book::Book(Enums::ItemTypes bookType, std::string author, std::string title, int ID)
-    :m_BookType(bookType), m_Author(author), m_Title(title)
-{
+    :m_BookType(bookType), m_Author(author), m_Title(title){
     m_ID = ID;
 }
 

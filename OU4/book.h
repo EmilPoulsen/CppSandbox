@@ -16,13 +16,10 @@ public:
     std::string getOriginator();
     std::string getTitle();
     std::string getExtraInfo();
-
-
 private:
     std::string m_Author;
     std::string m_Title;
     Enums::ItemTypes m_BookType;
-
 };
 
 #endif // BOOK_H
