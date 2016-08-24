@@ -9,50 +9,103 @@
 #include <iostream>
 #include <algorithm>
 
-
+/**
+ * @brief ShapePtr::numshapes
+ * Static class field for counting the number of instances created of ShapePtr
+ */
 int ShapePtr::numshapes;
 
+/**
+ * @brief ShapePtr::ShapePtr
+ * Default constructor
+ */
 ShapePtr::ShapePtr()
-    : m_pShape(0)
-{
-    incrementShapeCounter();
+    : m_pShape(0){
 }
 
+/**
+ * @brief ShapePtr::ShapePtr
+ * Constructor with the containing shape as argument
+ * @param shape
+ */
 ShapePtr::ShapePtr(Shape* shape)
-    : m_pShape(shape)
-{
+    : m_pShape(shape){
+}
+
+/**
+ * @brief ShapePtr::ShapePtr
+ * Copy constructor. Will increment numshapes
+ * @param other
+ * The instance of ShapePtr to copy
+ */
+ShapePtr::ShapePtr(const ShapePtr &other)
+    :m_pShape(other.m_pShape){
     incrementShapeCounter();
 }
 
+/**
+ * @brief ShapePtr::~ShapePtr
+ * Default deconstructor. Will decrement numshapes
+ */
 ShapePtr::~ShapePtr(){
     decrementShapeCounter();
     //delete m_pShape;
 }
 
-void ShapePtr::incrementShapeCounter()
-{
+/**
+ * @brief ShapePtr::incrementShapeCounter
+ * Method to call to increment instance counter
+ */
+void ShapePtr::incrementShapeCounter(){
     numshapes++;
 }
 
-void ShapePtr::decrementShapeCounter()
-{
+/**
+ * @brief ShapePtr::decrementShapeCounter
+ * Method to call to decrement instance counter
+ */
+void ShapePtr::decrementShapeCounter(){
     numshapes--;
 }
 
-
+/**
+ * @brief ShapePtr::getShape
+ * Returns a pointer to the contained object
+ * @return
+ *
+ */
 Shape* ShapePtr::getShape() const{
     return m_pShape;
 }
 
+/**
+ * @brief ShapePtr::print
+ * Returns a string containing information about the shape. Direct call to Shape::print()
+ * @return
+ */
 std::string ShapePtr::print() const {
     return m_pShape->getPrintString();
 }
 
+/**
+ * @brief operator <<
+ * Implementation of out stream operator
+ * @param os
+ * @param v
+ * @return
+ */
 std::ostream & operator<<(std::ostream& os, const ShapePtr& v){
      os << v.print();
      return os;
  }
 
+/**
+ * @brief operator >>
+ * Implementation of instream operator. Will create a new instance based on text input
+ * @param is
+ * @param sp
+ * @return
+ */
 std::istream& operator>>(std::istream& is, ShapePtr& sp){
     Shape* newShape;
     string s;
@@ -62,6 +115,13 @@ std::istream& operator>>(std::istream& is, ShapePtr& sp){
     return localis;
 }
 
+/**
+ * @brief ShapePtr::createShapeFromString
+ * Creates a polymorphic instance of shape based on text input "POL", "CIR", "REC" or "POI"
+ * @param s
+ * The input string. See implementation of print() in the different shapes for exact formatting
+ * @return
+ */
 Shape* ShapePtr::createShapeFromString(string s){
     string type = s.substr(0,3);
     Shape* newShape;
@@ -83,7 +143,15 @@ Shape* ShapePtr::createShapeFromString(string s){
     return newShape;
 }
 
-//Example of format: "POLYGON: (1,4) {(0,0) (10,0) (5,2) (5,5) }"
+
+//TODO: break up this function in smaller portions..
+/**
+ * @brief ShapePtr::createPolygon
+ * Creates an instance of polygon including its vertices based on text input
+ * @param s
+ * Input string. Example of format: "POLYGON: (1,4) {(0,0) (10,0) (5,2) (5,5) }"
+ * @return
+ */
 Shape* ShapePtr::createPolygon(string s){
     //find the centre coordinates in the string
     int iFirstLeftParenthesis = s.find_first_of("("); //9
@@ -127,7 +195,16 @@ Shape* ShapePtr::createPolygon(string s){
    return new Polygon(x, y, varr, vList.size() ); //create and return the polygon
 }
 
-//comes in form of "(1,4)"
+/**
+  * @brief ShapePtr::getCoordinatesFromString
+  * Transforms a string containing coordinates to a pair of double x and y values
+  * @param str
+  * The input string of the coordinates. comes in form of "(1,4)"
+  * @param x
+  * The x value transformed to a double (reference)
+  * @param y
+  * The y value transformed to a double (reference)
+  */
  void ShapePtr::getCoordinatesFromString(string str, double &x, double &y){
     str.erase(std::remove(str.begin(), str.end(), '('), str.end());
     str.erase(std::remove(str.begin(), str.end(), ')'), str.end());
@@ -138,7 +215,15 @@ Shape* ShapePtr::createPolygon(string s){
     y = atof(sY.c_str());
 }
 
-//CIRCLE: (5,5) 4
+//
+ /**
+ * @brief ShapePtr::createCircle
+ * Creates an instance of a circle based on text input
+ * @param s
+ * The input string of the coordinates. Comes in the form of a "CIRCLE: (5,5) 4"
+ * @return
+ * The generated circle
+ */
 Shape* ShapePtr::createCircle(string s){
     //get the radius in the last position of the input string.
     string sRadius = s.substr(s.length() - 1, 1);
@@ -152,8 +237,13 @@ Shape* ShapePtr::createCircle(string s){
      return new Circle(x, y, r);
 }
 
-
-//RECTANGLE: (4,10) (2,4)
+/**
+ * @brief ShapePtr::createRectangle
+ * Creates an instance of a rectangle based on text input
+ * @param s
+ * The input string. Comes in the form of "RECTANGLE: (4,10) (2,4)"
+ * @return
+ */
 Shape* ShapePtr::createRectangle(string s){
     double x, y, width, height;
     for(int i = 0; i < 2; i++){ //same procedure for both coordinates and dimesion, so why not loop it..
@@ -174,7 +264,13 @@ Shape* ShapePtr::createRectangle(string s){
     return new Rectangle(x, y, width, height);
 }
 
-//POINT: (6,7) 1
+/**
+ * @brief ShapePtr::createPoint
+ * Creates an instance of a point based on text input
+ * @param s
+ * The input string. Comes in form of "POINT: (6,7) 1"
+ * @return
+ */
 Shape* ShapePtr::createPoint(string s){ //essentially the same code as createCircle
     //get the radius in the last position of the input string.
     string sRadius = s.substr(s.length() - 1, 1);
@@ -188,19 +284,43 @@ Shape* ShapePtr::createPoint(string s){ //essentially the same code as createCir
      return new Point(x, y, size);
 }
 
-bool ShapePtr::isCloseTo(Vertex other, double tolerance){
-    return m_pShape->IsCloseToVertex(other, 1);
+/**
+ * @brief ShapePtr::isCloseTo
+ * Checks if the containing shape is closer to a given vertex based on a tolerance
+ * @param vertex
+ * The vertex to check against
+ * @param tolerance
+ * @return
+ * True if the shape is within the tolerance, false if not.
+ */
+bool ShapePtr::isCloseTo(Vertex vertex, double tolerance){
+    return m_pShape->IsCloseToVertex(vertex, 1);
 }
 
-double ShapePtr::getArea(){
+/**
+ * @brief ShapePtr::getArea
+ * Get the area of the contained shape
+ * @return
+ */
+double ShapePtr::getArea() const{
     return m_pShape->area();
 }
 
-double ShapePtr::getX(){
+/**
+ * @brief ShapePtr::getX
+ * Get the x value (centre) of the contained shape
+ * @return
+ */
+double ShapePtr::getX() const{
     return m_pShape->getX();
 }
 
-double ShapePtr::getY(){
+/**
+ * @brief ShapePtr::getY
+ * Get the y value (centre) of the contained shape
+ * @return
+ */
+double ShapePtr::getY() const{
     return m_pShape->getY();
 }
 

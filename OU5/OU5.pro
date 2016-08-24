@@ -19,4 +19,5 @@ HEADERS += \
     ../OU3/vertex.h \
     ../OU3/circle.h \
     ../OU3/point.h \
-    ../OU3/rectangle.h
+    ../OU3/rectangle.h \
+    shapefunctors.h

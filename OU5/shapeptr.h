@@ -8,6 +8,7 @@ class ShapePtr
 public:
     ShapePtr();
     ShapePtr(Shape* shape);
+    ShapePtr( const ShapePtr& other );
     friend std::ostream& operator<<(std::ostream& os, const ShapePtr& p);
     friend std::istream& operator>>(std::istream& is, ShapePtr& sp);
     static Shape* createShapeFromString(string s);
@@ -19,9 +20,9 @@ public:
     static Shape* createPoint(string s);
     static void getCoordinatesFromString(string s, double &x, double &y);
     bool isCloseTo(Vertex other, double tolerance);
-    double getArea();
-    double getX();
-    double getY();
+    double getArea() const;
+    double getX() const;
+    double getY() const;
     ~ShapePtr();
     static int numshapes;
 

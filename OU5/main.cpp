@@ -3,7 +3,6 @@
 #include <list>
 #include <iterator>
 #include <algorithm>
-
 #include "shapeptr.h"
 #include <vector>
 #include "../OU3/vertex.h"
@@ -12,51 +11,8 @@
 #include "../OU3/circle.h"
 #include "../OU3/rectangle.h"
 #include "../OU3/point.h"
-
-
+#include "shapefunctors.h"
 using namespace std;
-
-class CloseTo{
-public:
-    CloseTo(Vertex v){
-        m_Vertex = v;
-    }
-
-    bool operator()(ShapePtr shapePointer){
-        return shapePointer.isCloseTo(m_Vertex,1);
-    }
-private:
-    Vertex m_Vertex;
-};
-
-struct SortByAreaKey
-{
-    inline bool operator() (const ShapePtr& shape1, const ShapePtr& shape2)
-    {
-        return (shape1.getArea() < shape2.getArea());
-    }
-};
-
-struct SortByXkey
-{
-    inline bool operator() (const ShapePtr& shape1, const ShapePtr& shape2)
-    {
-        return (shape1.getX() < shape2.getY());
-    }
-};
-
-struct SortByYkey
-{
-    inline bool operator() (const ShapePtr& shape1, const ShapePtr& shape2)
-    {
-        return (shape1.getY() < shape2.getY());
-    }
-};
-
-
-
-
-
 
 int main(int argc, char *argv[])
 {
@@ -66,7 +22,6 @@ int main(int argc, char *argv[])
     // Här antar jag att ShapePtr har en konstruktor som tar en parameter av
     // typen "Shape *" och att just denna konstruktor _inte_ gör djupkopiering
     // Andra konstruktorer ska göra djupkopiering.
-
 
      shapevec.push_back( ShapePtr(new Polygon(1, 4, varr, 4 )) );
      shapevec.push_back( ShapePtr(new Circle(5, 5, 4)) );
@@ -93,16 +48,22 @@ int main(int argc, char *argv[])
     it != shapelist.end(); it++)
     cout << *it << endl;
 
-    /////// SORT BY AREA AND PRINT ////////
-    cout << "start of sorting stuff" << endl;
-    std::sort(shapevec.begin(), shapevec.end(), SortByAreaKey);
-    //std::sort(shapevec.begin(), shapevec.end(), SortByXkey);
-    //std::sort(shapevec.begin(), shapevec.end(), SortByYkey);
-    for (list<ShapePtr>::iterator it = shapelist.begin();
-    it != shapelist.end(); it++)
-    cout << *it << endl;
-
-
+    ////////////////////////////////////////////////////////
+    /////// TEST CODE FOR SORTING FUNCTORS//////////////////
+    ////////////////////////////////////////////////////////
+    //cout << "start of sorting stuff" << endl;
+    //std::sort(shapevec.begin(), shapevec.end(), SortByAreaKey());
+    //std::sort(shapevec.begin(), shapevec.end(), SortByXkey());
+    //std::sort(shapevec.begin(), shapevec.end(), SortByYkey());
+    for (int i = 0; i < shapevec.size(); ++i) {
+        ///
+        //cout << shapevec[i].getArea() << endl;
+        //cout << shapevec[i].getX() << endl;
+        //cout << shapevec[i].getY() << endl;
+    }
+    //cout << "end of sorting stuff" << endl;
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
 
     shapevec.insert( shapevec.end(), shapelist.begin(), shapelist.end() );
     //position - Position in the vector where the new elements are inserted.
@@ -115,17 +76,13 @@ int main(int argc, char *argv[])
 
 
     ostream_iterator<const ShapePtr> shapecout(cout,"\n");
-    cout << shapevec.size() << endl;
+    cout << "size of shapevec: " << shapevec.size() << endl;
 
-    cerr << ShapePtr::numshapes << endl; // numshapes är ett statiskt attribut
+    cerr << "counter from numshapes: " << ShapePtr::numshapes << endl; // numshapes är ett statiskt attribut
                         // som håller reda på antalet objekt genom
                         // inkrement i konstruktorer och
                         // dekrement i destruktorn
 
     copy( shapevec.begin(), shapevec.end(), shapecout);
-
-
-
-    //cout << "Hello World!" << endl;
     return 0;
 }
