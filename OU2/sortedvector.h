@@ -105,7 +105,8 @@ void SortedVector<T, sz>::removeLarger(const T& v){
             //found the array item larger than v.
             for(int j = i; j < incr; j++){
                 //remove the items with indices larger than i.
-                arr[j] = 0;
+                //arr[j] = 0; WRONG WAY OF DOING IT!
+                arr[j] = T();
             }
             incr = i + 1; //update the incrementor
             return;

@@ -11,6 +11,8 @@ Polygon::Polygon()
     vertices = new Vertex[0]; //initialize pointer
 }
 
+
+
 /**
   * @brief Polygon::Polygon
   * constructor with vertices as input
@@ -31,7 +33,6 @@ Polygon::Polygon()
      }
  }
 
- /*
  Polygon::Polygon(const Polygon &other)
  {
      numOfVertices = other.numOfVertices;
@@ -40,9 +41,7 @@ Polygon::Polygon()
      for (int i = 0; i < other.numOfVertices; ++i) {
          vertices[i] = other.vertices[i];
      }
-
  }
- */
 
  /**
   * @brief Polygon::calcArea

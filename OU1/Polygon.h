@@ -8,7 +8,7 @@ class Polygon
 public:
     Polygon();
     Polygon(Vertex v1[], int arrSize);
-    //Polygon(const Polygon& other );
+    Polygon(const Polygon& other );
 
 
     void add(Vertex v);
