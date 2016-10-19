@@ -23,6 +23,7 @@ public:
     friend std::ostream & operator<<(std::ostream& os, const Polygon& v);
     friend bool operator< (const Polygon &c1, const Polygon &c2);
     friend bool operator> (const Polygon &c1, const Polygon &c2);
+    const Polygon & operator=( const Polygon & a );
 
 private:
     Vertex *vertices;

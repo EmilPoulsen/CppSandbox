@@ -238,4 +238,18 @@ bool operator> (const Polygon &c1, const Polygon &c2)
     return (c1.area()> c2.area());
 }
 
+const Polygon & Polygon::operator=(const Polygon & other)
+{
+    if (this != &other) // tillåt self-assignment: a = a;
+    {
+        numOfVertices = other.numOfVertices;
+        vertices = new Vertex[other.numOfVertices];
+
+        for (int i = 0; i < other.numOfVertices; ++i) {
+            vertices[i] = other.vertices[i];
+        }
+    }
+    return *this;
+}
+
 
