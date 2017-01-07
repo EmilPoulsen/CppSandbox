@@ -56,3 +56,4 @@ Shape* Point::clone(){
     Shape* cloned = new Point(m_X, m_Y, m_Size);
     return cloned;
 }
+

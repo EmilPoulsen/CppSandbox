@@ -36,13 +36,15 @@ ShapeList::ShapeList( ShapeList& other ){
 
 /**
  * @brief ShapeList::remove
- * Removes a shape in the linked list if it's closer than 1 to a given vertex
+ * Removes a shape in the linked list if it's
+ * closer than 1 to a given vertex
  * @param v
  * The vertex to check against.
  */
 void ShapeList::remove( const Vertex &v){
     Node *current = _pHead;
     Node *previous = _pHead;
+    //find which one to delete
     while (current != 0){ //traverse the list.
         Shape* s = current->getValue();
         if(s->IsCloseToVertex(v,1)){
@@ -51,11 +53,15 @@ void ShapeList::remove( const Vertex &v){
         previous = current;
         current = current->getNext();
     }
+    //delete it
     if(current == _pHead){
-        _pHead = _pHead->getNext();
+        Node *toBeDeleted = _pHead;
+        _pHead = _pHead->getNext(); //bypass
+        delete toBeDeleted; //delete it
     }
     else{
-        previous->setNext(current->getNext());
+        previous->setNext(current->getNext()); //bypass
+        delete current; //delete current
     }
 }
 
@@ -114,6 +120,12 @@ double ShapeList::area(){
  * Default destructor
  */
 ShapeList::~ShapeList(){
+    //iterate through the linked list and
+    //free the memory of the nodes.
+    Node *current = _pHead;
+    while (current != 0){
+        Node *toBeDeleted = current;
+        current = current->getNext();
+        delete toBeDeleted;
+    }
 }
-
-

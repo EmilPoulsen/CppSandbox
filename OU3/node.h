@@ -8,6 +8,7 @@ class Node
     friend class ShapeList;
 public:
     Node();
+    ~Node();
     Node(Shape &shape);
     Node(Shape &shape, Node *next);
     Shape* getValue();

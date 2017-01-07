@@ -53,3 +53,11 @@ Node* Node::getNext(){
 void Node::setNext(Node *next){
     this->mNext = next;
 }
+
+/**
+ * @brief Node::~Node
+ * Default destructor
+ */
+Node::~Node(){
+    delete mShape;
+}
