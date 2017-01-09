@@ -13,15 +13,11 @@ int main(int argc, char *argv[])
 {
     ShapeList list;
     Vertex varr[] = { Vertex(0,0), Vertex(10,0),
-    Vertex(5,2), Vertex(5,5) };
-    Polygon pol( 1, 4, varr, 4 );
-    list.add(pol);
-    Rectangle rec( 4, 10, 2, 4);
-    list.add(rec);
-    Circle cir( 5,5, 3);
-    list.add(cir);
-    Point pt( 6, 7, 1 );
-    list.add(pt);
+                      Vertex(5,2), Vertex(5,5) };
+    list.add( Polygon( 1, 4, varr, 4 ) );
+    list.add( Rectangle( 4, 10, 2, 4) );
+    list.add( Circle( 5,5, 3)  );
+    list.add( Point( 6, 7, 1 ) );
     list.print();
     cout << " Totalyta: " << list.area() << endl;
     ShapeList list2(list);

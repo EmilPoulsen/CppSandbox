@@ -29,7 +29,9 @@ ShapeList::ShapeList( ShapeList& other ){
     Node *current = other._pHead;
     while (current != 0){
         Shape* s = current->getValue();
-        this->add(*(s->clone()));
+        //don't clone since the object is being cloned
+        //in the add method.
+        this->add(*s);//this->add(*(s->clone()));
         current = current->getNext();
     }
 }
@@ -71,9 +73,10 @@ void ShapeList::remove( const Vertex &v){
  * @param shape
  * The shape to add
  */
-void ShapeList::add(Shape &shape){
+void ShapeList::add(Shape const &shape){
+
     if(_pHead == 0){
-        _pHead = new Node(shape);
+        _pHead = new Node(*(shape.clone()));//clone shape before creating new
         _pTail = _pHead;
     }
     else{
@@ -81,7 +84,7 @@ void ShapeList::add(Shape &shape){
         while (current->getNext() != 0) {
             current = current->getNext();
         }
-        Node *newNode = new Node(shape);
+        Node *newNode = new Node(*(shape.clone()));//clone shape before creating new
         current->setNext(newNode);
     }
 }

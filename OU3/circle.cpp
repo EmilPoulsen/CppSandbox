@@ -50,7 +50,7 @@ double Circle::calculateArea(){
  * @return
  * The cloned object
  */
-Shape* Circle::clone(){
+Shape* Circle::clone() const{
     Shape* cloned = new Circle(m_X, m_Y, m_Radius);
     return cloned;
 }

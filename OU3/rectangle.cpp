@@ -69,7 +69,7 @@ double Rectangle::calculateArea(){
  * @return
  * The cloned object
  */
-Shape* Rectangle::clone(){
+Shape* Rectangle::clone()  const{
     Shape* cloned = new Rectangle(m_X, m_Y,m_Width, m_Height);
     return cloned;
 }

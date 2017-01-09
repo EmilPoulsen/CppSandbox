@@ -11,7 +11,7 @@ public:
     void print();
     string getPrintString();
     double calculateArea();
-    Shape *clone ();
+    Shape *clone () const;
 private:
     double m_Radius;
 };

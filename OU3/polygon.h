@@ -1,7 +1,7 @@
 #ifndef POLYGON_H
 #define POLYGON_H
-#include "shape.h";
-#include "vertex.h";
+#include "shape.h"
+#include "vertex.h"
 #include <string>
 
 class Polygon : public Shape
@@ -12,7 +12,7 @@ public:
     void print();
     std::string getPrintString();
     double calculateArea();
-    Shape *clone ();
+    Shape *clone () const;
 private:
     Vertex *vertices;
     double calcArea() const;

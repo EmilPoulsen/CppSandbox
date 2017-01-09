@@ -1,6 +1,6 @@
 #ifndef POINT_H
 #define POINT_H
-#include "shape.h";
+#include "shape.h"
 
 class Point  : public Shape
 {
@@ -10,7 +10,7 @@ public:
     void print();
     string getPrintString();
     double calculateArea();
-    Shape *clone ();
+    Shape *clone () const;
 private:
     double m_Size;
 };

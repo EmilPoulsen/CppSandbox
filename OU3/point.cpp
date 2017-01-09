@@ -52,7 +52,7 @@ double Point::calculateArea(){
  * @return
  * The cloned object
  */
-Shape* Point::clone(){
+Shape* Point::clone() const{
     Shape* cloned = new Point(m_X, m_Y, m_Size);
     return cloned;
 }

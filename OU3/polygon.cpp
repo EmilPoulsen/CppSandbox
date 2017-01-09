@@ -96,7 +96,7 @@ double Polygon::calculateArea(){
  * @return
  * The cloned object
  */
-Shape* Polygon::clone(){
+Shape* Polygon::clone() const{
     Shape* cloned = new Polygon(m_X, m_Y,vertices,numOfVertices);
     return cloned;
 }

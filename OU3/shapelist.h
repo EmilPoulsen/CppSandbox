@@ -12,7 +12,7 @@ public:
     ShapeList(Shape &shape);
     void remove( const Vertex &v);
     ShapeList( ShapeList& other );
-    void add(Shape &shape);
+    void add(const Shape &shape);
     void print();
     double area();
     ~ShapeList();//Destructor
