@@ -398,8 +398,9 @@ void LibraryApp::addBook(Enums::ItemTypes type){
 
 
      //delete m_LibraryDatabase[id];
-     m_LibraryDatabase.erase(m_LibraryDatabase.begin()+vecIndex);
      delete m_LibraryDatabase[vecIndex];
+     m_LibraryDatabase.erase(m_LibraryDatabase.begin()+vecIndex);
+
      m_GuiLibrary.printString("Item with index " + std::to_string(id) + " was successfully deleted");
  }
 
