@@ -100,18 +100,20 @@ vector<LendingItem*> LibraryApp::searchInLibrary(string &searchString, string &T
     {
         LendingItem* currObject =   m_LibraryDatabase[i];
         string searchProperty;
-        if(TitleorAuthor == "T"){
-            searchProperty = currObject->getTitle();
-        }
-        else if(TitleorAuthor == "A"){
-            searchProperty = currObject->getOriginator();
-        }
-        else{
+        if(currObject != nullptr){
+            if(TitleorAuthor == "T"){
+                searchProperty = currObject->getTitle();
+            }
+            else if(TitleorAuthor == "A"){
+                searchProperty = currObject->getOriginator();
+            }
+            else{
 
-        }
+            }
 
-        if(stringContainsOtherString(searchString, searchProperty)){
-            foundObjects.push_back(currObject);
+            if(stringContainsOtherString(searchString, searchProperty)){
+                foundObjects.push_back(currObject);
+            }
         }
     }
     return foundObjects;
@@ -394,8 +396,10 @@ void LibraryApp::addBook(Enums::ItemTypes type){
          return;
      }
 
-     delete m_LibraryDatabase[id];
+
+     //delete m_LibraryDatabase[id];
      m_LibraryDatabase.erase(m_LibraryDatabase.begin()+vecIndex);
+     delete m_LibraryDatabase[vecIndex];
      m_GuiLibrary.printString("Item with index " + std::to_string(id) + " was successfully deleted");
  }
 
@@ -415,7 +419,7 @@ void LibraryApp::addBook(Enums::ItemTypes type){
          return;
      }
 
-     if(item->getLenderIndex() != 0){
+     if(item->getLenderIndex() == 0){
          m_GuiLibrary.printString("Item with index " + std::to_string(id) + " is available and cannot be returned");
          return;
      }

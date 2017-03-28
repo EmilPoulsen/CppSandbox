@@ -16,6 +16,7 @@ int LendingItem::getLenderIndex(){
     return m_LenderIndex;
 }
 
+//0 markerar att objektet är tillgängligt för utlåning
 void LendingItem::setLenderIndex(int index){
     m_LenderIndex = index;
 }
