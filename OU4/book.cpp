@@ -33,5 +33,9 @@ std::string Book::getExtraInfo(){
     return "";
 }
 
+Enums::ItemTypes Book::getItemType(){
+    return Enums::Fiction;
+}
+
 
 

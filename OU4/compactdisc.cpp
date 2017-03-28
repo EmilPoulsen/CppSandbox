@@ -1,4 +1,6 @@
 #include "compactdisc.h"
+#include "enums.h"
+
 
 //TODO: add comments and documentation
 CompactDisc::CompactDisc(){
@@ -28,5 +30,9 @@ std::string CompactDisc::getOriginator(){
 
 std::string CompactDisc::getExtraInfo(){
     return m_RunTime;
+}
+
+Enums::ItemTypes CompactDisc::getItemType(){
+    return Enums::CD;
 }
 

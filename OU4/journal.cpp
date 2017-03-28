@@ -25,3 +25,7 @@ std::string Journal::getOriginator(){
 std::string Journal::getExtraInfo(){
     return "";
 }
+
+Enums::ItemTypes Journal::getItemType(){
+    return Enums::Journal;
+}

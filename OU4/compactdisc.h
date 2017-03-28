@@ -13,6 +13,7 @@ public:
     std::string getTitle();
     std::string getOriginator();
     std::string getExtraInfo();
+    Enums::ItemTypes getItemType();
 private:
     std::string m_Artist;
     std::string m_Title;

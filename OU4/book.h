@@ -16,6 +16,7 @@ public:
     std::string getOriginator();
     std::string getTitle();
     std::string getExtraInfo();
+    Enums::ItemTypes getItemType();
 private:
     std::string m_Author;
     std::string m_Title;

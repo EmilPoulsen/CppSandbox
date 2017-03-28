@@ -29,9 +29,9 @@ private:
    ///////////////////////////////////////////
     bool ReadLibraryDb(string path);
     vector<string> ReadTextFile(string path);
-    vector<LendingItem> createLendingItemsFromTxt(vector<string> database);
+    void createLendingItemsFromTxt(vector<string> database);
     Enums::ItemTypes txtLineIsNewLendingItem(string &line);
-    LendingItem* createNewLendingItem(vector<string> &database, int &startrow, int &endrow, Enums::ItemTypes type, int id);
+    LendingItem* createNewLendingItem(vector<string> &database, int &startrow, Enums::ItemTypes type, int id);
     int generateNewId();
     void runMainLoop();
     void processUserInput(string &input);

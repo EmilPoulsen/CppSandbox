@@ -79,7 +79,7 @@ void LibraryApp::startSearchDialog(){
 void LibraryApp::printFoundObjects(vector<LendingItem*> &foundItems){
     vector<string> outputPerFoundItem;
     string separator = "-----------------------------";
-    for(int i = 0; i < foundItems.size(); i++){
+    for(unsigned int i = 0; i < foundItems.size(); i++){
         outputPerFoundItem.clear();
         outputPerFoundItem.push_back(separator);
         LendingItem* currentItem = foundItems[i];
@@ -94,7 +94,7 @@ void LibraryApp::printFoundObjects(vector<LendingItem*> &foundItems){
 
 vector<LendingItem*> LibraryApp::searchInLibrary(string &searchString, string &TitleorAuthor){
     vector<LendingItem*> foundObjects;
-    for(int i = 0; i < m_LibraryDatabase.size(); i++)
+    for(unsigned int i = 0; i < m_LibraryDatabase.size(); i++)
     {
         LendingItem* currObject =   m_LibraryDatabase[i];
         string searchProperty;
@@ -149,7 +149,7 @@ void LibraryApp::borrowItem(LendingItem* item, int borrower){
 }
 
 LendingItem* LibraryApp::findLendingItemFromIndex(int index){
-    for(int i = 0; i < m_LibraryDatabase.size(); i++){
+    for(unsigned int i = 0; i < m_LibraryDatabase.size(); i++){
         LendingItem* currItem = m_LibraryDatabase[i];
         if(currItem->getID() == index){
             return currItem;
@@ -159,7 +159,7 @@ LendingItem* LibraryApp::findLendingItemFromIndex(int index){
 }
 
 LendingItem* LibraryApp::findLendingItemFromIndex(int index, int &indexInVector){
-    for(int i = 0; i < m_LibraryDatabase.size(); i++){
+    for(unsigned int i = 0; i < m_LibraryDatabase.size(); i++){
         LendingItem* currItem = m_LibraryDatabase[i];
         if(currItem->getID() == index){
             indexInVector = i;
@@ -201,19 +201,19 @@ void LibraryApp::processUserInput(std::string &input){
      if(database.size() == 0){
          return false;
      }
-     vector<LendingItem> libraryDatabase;
-     libraryDatabase = createLendingItemsFromTxt(database);
+     //vector<LendingItem> libraryDatabase;
+     createLendingItemsFromTxt(database);
      return true;
  }
 
- vector<LendingItem> LibraryApp:: createLendingItemsFromTxt(vector<string> database){
+ void LibraryApp:: createLendingItemsFromTxt(vector<string> database){
      //vector<LendingItem*> lendingItems;
      LendingItem* newLibraryEntity;
      int startRowOfObject;
      int endRowOfObject;
      Enums::ItemTypes prevItem;
 
-     for(int i=0; i < database.size(); i++){
+     for(unsigned int i=0; i < database.size(); i++){
         //cout << database[i] << endl;
          Enums::ItemTypes item;
         item = txtLineIsNewLendingItem(database[i]);
@@ -222,7 +222,7 @@ void LibraryApp::processUserInput(std::string &input){
             //for the first item
             if(i != 0){
                 //create the object if not equal to zero
-                newLibraryEntity = createNewLendingItem(database, startRowOfObject, endRowOfObject, prevItem, generateNewId());
+                newLibraryEntity = createNewLendingItem(database, startRowOfObject, prevItem, generateNewId());
                 m_LibraryDatabase.push_back(newLibraryEntity);
             }
             startRowOfObject = i;
@@ -234,13 +234,13 @@ void LibraryApp::processUserInput(std::string &input){
         }
         //for the last item
         if(i == database.size() -1){
-            newLibraryEntity = createNewLendingItem(database, startRowOfObject, endRowOfObject, prevItem, generateNewId());
+            newLibraryEntity = createNewLendingItem(database, startRowOfObject, prevItem, generateNewId());
             m_LibraryDatabase.push_back(newLibraryEntity);
         }
      }
  }
 
- LendingItem* LibraryApp::createNewLendingItem(vector<string> &database, int &startrow, int &endrow, Enums::ItemTypes type, int id){
+ LendingItem* LibraryApp::createNewLendingItem(vector<string> &database, int &startrow, Enums::ItemTypes type, int id){
      LendingItem* newItem;
      int borrowerIndexInArray = 4; //will be 5 for CD, otherwise 4.
      switch(type){
@@ -261,7 +261,7 @@ void LibraryApp::processUserInput(std::string &input){
            cout << "Invalid Selection\n";
            break;
      }
-     newItem->setItemType(type);
+     //newItem->setItemType(type);
      string strBorrower = database[startrow+borrowerIndexInArray];
      int iBorrower;
      m_GuiLibrary.str2int(iBorrower, strBorrower.c_str());
@@ -307,7 +307,7 @@ vector<string> LibraryApp::ReadTextFile(string path){
      //create the object
      LendingItem* newItem;
      newItem = new CompactDisc(artist, album, playtime, generateNewId());
-     newItem->setItemType(Enums::CD);
+     //newItem->setItemType(Enums::CD);
      newItem->setLenderIndex(0);
      m_LibraryDatabase.push_back(newItem);
 
@@ -336,7 +336,7 @@ void LibraryApp::addBook(Enums::ItemTypes type){
     //create the object
     LendingItem* newItem;
     newItem = new Book(type, author, title, generateNewId());
-    newItem->setItemType(type);
+    //newItem->setItemType(type);
     newItem->setLenderIndex(0);
     m_LibraryDatabase.push_back(newItem);
 
@@ -356,7 +356,7 @@ void LibraryApp::addBook(Enums::ItemTypes type){
      //create the object
      LendingItem* newItem;
      newItem = new Journal(title, volume, generateNewId());
-     newItem->setItemType(Enums::Journal);
+     //newItem->setItemType(Enums::Journal);
      newItem->setLenderIndex(0);
      m_LibraryDatabase.push_back(newItem);
 
@@ -368,7 +368,7 @@ void LibraryApp::addBook(Enums::ItemTypes type){
  }
  void LibraryApp::removeAnObjectFromTheLibrary(){
      int id;
-     int borrower;
+     //int borrower;
      bool success = m_GuiLibrary.initializeReturnProcedure(id);
 
      if(!success)
@@ -390,7 +390,7 @@ void LibraryApp::addBook(Enums::ItemTypes type){
 
  void LibraryApp::returnAnObject(){
      int id;
-     int borrower;
+     //int borrower;
      bool success = m_GuiLibrary.initializeReturnProcedure(id);
 
      if(!success)
@@ -417,7 +417,7 @@ void LibraryApp::saveFile(){
     myfile.open(m_Path, std::ofstream::out | std::ofstream::trunc);
     if (myfile.is_open())
       {
-        for(int i = 0; i < m_LibraryDatabase.size(); i++){
+        for(unsigned int i = 0; i < m_LibraryDatabase.size(); i++){
             LendingItem* currItem = m_LibraryDatabase[i];
             myfile << currItem->getItemTypeString() << endl;
             myfile << currItem->getOriginator() << endl;
@@ -438,7 +438,7 @@ void LibraryApp::saveFile(){
 
 LibraryApp:: ~LibraryApp(){
     //delete the library items
-    for(int i = 0; i < m_LibraryDatabase.size(); ++i){
+    for(unsigned int i = 0; i < m_LibraryDatabase.size(); ++i){
        delete m_LibraryDatabase[i];
     }
 }
