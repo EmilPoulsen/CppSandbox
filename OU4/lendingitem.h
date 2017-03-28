@@ -7,6 +7,7 @@ class LendingItem
 {
 public:
     LendingItem();
+    virtual ~LendingItem(); //destructor
     virtual std::string getOriginator() = 0;
     virtual std::string getTitle() = 0;
     virtual std::string getExtraInfo() = 0; //playtime for CD for example
@@ -18,6 +19,7 @@ public:
     //void setItemType(Enums::ItemTypes itemType);
     std::string getItemTypeString();
     std::string getIdString();
+
 protected:
     int m_ID;
     bool m_IsLentOut;

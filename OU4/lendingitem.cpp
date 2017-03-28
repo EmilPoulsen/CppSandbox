@@ -37,3 +37,7 @@ std::string LendingItem::getIdString(){
     std::string s = std::to_string(m_ID);
     return s;
 }
+
+LendingItem::~LendingItem(){
+
+}
