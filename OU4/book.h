@@ -8,19 +8,16 @@ class Book : public LendingItem
 {
 public:
     Book();
-    Book(Enums::ItemTypes bookType, std::string author, std::string title, int ID);
+    Book(std::string author, std::string title, int ID);
     std::string getAuthor();
-    //std::string getTitle();
-    void setBookType(Enums::ItemTypes bookType);
-    Enums::ItemTypes getBookType();
     std::string getOriginator();
     std::string getTitle();
     std::string getExtraInfo();
-    Enums::ItemTypes getItemType();
+    virtual Enums::ItemTypes getItemType() = 0;
 private:
     std::string m_Author;
     std::string m_Title;
-    Enums::ItemTypes m_BookType;
+    //Enums::ItemTypes m_BookType;
 };
 
 #endif // BOOK_H

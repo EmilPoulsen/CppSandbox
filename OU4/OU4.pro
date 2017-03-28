@@ -10,7 +10,9 @@ SOURCES += main.cpp \
     compactdisc.cpp \
     libraryapp.cpp \
     enums.cpp \
-    guilibrary.cpp
+    guilibrary.cpp \
+    fictionbook.cpp \
+    nonfictionbook.cpp
 
 HEADERS += \
     lendingitem.h \
@@ -19,4 +21,6 @@ HEADERS += \
     compactdisc.h \
     libraryapp.h \
     enums.h \
-    guilibrary.h
+    guilibrary.h \
+    fictionbook.h \
+    nonfictionbook.h

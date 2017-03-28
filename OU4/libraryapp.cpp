@@ -7,6 +7,8 @@
 #include "enums.h"
 #include "compactdisc.h"
 #include "book.h"
+#include "fictionbook.h"
+#include "nonfictionbook.h"
 #include "journal.h"
 #include <algorithm>
 using namespace std;
@@ -249,13 +251,13 @@ void LibraryApp::processUserInput(std::string &input){
              borrowerIndexInArray = 5;
          break;
          case Enums::Fiction:
-           newItem = new Book(type, database[startrow+1],  database[startrow+2], id);
+           newItem = new FictionBook(database[startrow+1],  database[startrow+2], id);//new Book(type, database[startrow+1],  database[startrow+2], id);
            break;
          case Enums::Journal:
              newItem = new Journal(database[startrow+1], database[startrow+2], id);
            break;
          case Enums::NonFiction:
-            newItem = new Book(type, database[startrow+1],  database[startrow+2], id);
+            newItem = new NonFictionBook(database[startrow+1],  database[startrow+2], id); //Book(type, database[startrow+1],  database[startrow+2], id);
            break;
          default:
            cout << "Invalid Selection\n";
@@ -335,7 +337,16 @@ void LibraryApp::addBook(Enums::ItemTypes type){
 
     //create the object
     LendingItem* newItem;
-    newItem = new Book(type, author, title, generateNewId());
+    if(type == Enums::Fiction){
+        newItem = new FictionBook(author, title, generateNewId());
+    }
+    else if(type == Enums::NonFiction){
+        newItem = new NonFictionBook(author, title, generateNewId());
+    }
+    else{
+        //throw error!
+    }
+    //newItem = new Book(type, author, title, generateNewId());
     //newItem->setItemType(type);
     newItem->setLenderIndex(0);
     m_LibraryDatabase.push_back(newItem);
