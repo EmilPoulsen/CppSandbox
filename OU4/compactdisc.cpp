@@ -1,7 +1,6 @@
 #include "compactdisc.h"
 #include "enums.h"
 
-
 //TODO: add comments and documentation
 CompactDisc::CompactDisc(){
 

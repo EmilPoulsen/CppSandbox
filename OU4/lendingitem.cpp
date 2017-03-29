@@ -21,14 +21,6 @@ void LendingItem::setLenderIndex(int index){
     m_LenderIndex = index;
 }
 
-//void LendingItem::setItemType(Enums::ItemTypes itemType){
-//    m_ItemType = itemType;
-//}
-
-//Enums::ItemTypes LendingItem::getItemType(){
-//    return m_ItemType;
-//}
-
 std::string LendingItem::getItemTypeString(){
    return Enums::ToString(getItemType());
 }

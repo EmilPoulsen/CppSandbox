@@ -205,20 +205,17 @@ void LibraryApp::processUserInput(std::string &input){
      if(database.size() == 0){
          return false;
      }
-     //vector<LendingItem> libraryDatabase;
      createLendingItemsFromTxt(database);
      return true;
  }
 
  void LibraryApp:: createLendingItemsFromTxt(vector<string> database){
-     //vector<LendingItem*> lendingItems;
      LendingItem* newLibraryEntity;
      int startRowOfObject;
      int endRowOfObject;
      Enums::ItemTypes prevItem;
 
      for(unsigned int i=0; i < database.size(); i++){
-        //cout << database[i] << endl;
          Enums::ItemTypes item;
         item = txtLineIsNewLendingItem(database[i]);
 
@@ -267,7 +264,6 @@ void LibraryApp::processUserInput(std::string &input){
            cout << "Invalid Selection\n";
            break;
      }
-     //newItem->setItemType(type);
      string strBorrower = database[startrow+borrowerIndexInArray];
      int iBorrower;
      m_GuiLibrary.str2int(iBorrower, strBorrower.c_str());
@@ -314,7 +310,6 @@ vector<string> LibraryApp::ReadTextFile(string path){
      //create the object
      LendingItem* newItem;
      newItem = new CompactDisc(artist, album, playtime, generateNewId());
-     //newItem->setItemType(Enums::CD);
      newItem->setLenderIndex(0);
      m_LibraryDatabase.push_back(newItem);
 
@@ -351,8 +346,6 @@ void LibraryApp::addBook(Enums::ItemTypes type){
     else{
         //throw error!
     }
-    //newItem = new Book(type, author, title, generateNewId());
-    //newItem->setItemType(type);
     newItem->setLenderIndex(0);
     m_LibraryDatabase.push_back(newItem);
 
@@ -372,7 +365,6 @@ void LibraryApp::addBook(Enums::ItemTypes type){
      //create the object
      LendingItem* newItem;
      newItem = new Journal(title, volume, generateNewId());
-     //newItem->setItemType(Enums::Journal);
      newItem->setLenderIndex(0);
      m_LibraryDatabase.push_back(newItem);
 
@@ -384,7 +376,6 @@ void LibraryApp::addBook(Enums::ItemTypes type){
  }
  void LibraryApp::removeAnObjectFromTheLibrary(){
      int id;
-     //int borrower;
      bool success = m_GuiLibrary.initializeReturnProcedure(id);
 
      if(!success)
@@ -399,8 +390,6 @@ void LibraryApp::addBook(Enums::ItemTypes type){
          return;
      }
 
-
-     //delete m_LibraryDatabase[id];
      delete m_LibraryDatabase[vecIndex];
      m_LibraryDatabase.erase(m_LibraryDatabase.begin()+vecIndex);
      m_GuiLibrary.printString("Item with index " + std::to_string(id) + " was successfully deleted");
@@ -408,7 +397,6 @@ void LibraryApp::addBook(Enums::ItemTypes type){
 
  void LibraryApp::returnAnObject(){
      int id;
-     //int borrower;
      bool success = m_GuiLibrary.initializeReturnProcedure(id);
 
      if(!success)
