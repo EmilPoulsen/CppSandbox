@@ -31,7 +31,7 @@ private:
     vector<string> ReadTextFile(string path);
     void createLendingItemsFromTxt(vector<string> database);
     Enums::ItemTypes txtLineIsNewLendingItem(string &line);
-    LendingItem* createNewLendingItem(vector<string> &database, int &startrow, Enums::ItemTypes type, int id);
+    LendingItem* createNewLendingItem(vector<string> &database, int &startrow, Enums::ItemTypes type);
     int generateNewId();
     void runMainLoop();
     void processUserInput(string &input);

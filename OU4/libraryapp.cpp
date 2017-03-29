@@ -226,7 +226,7 @@ void LibraryApp::processUserInput(std::string &input){
             //for the first item
             if(i != 0){
                 //create the object if not equal to zero
-                newLibraryEntity = createNewLendingItem(database, startRowOfObject, prevItem, generateNewId());
+                newLibraryEntity = createNewLendingItem(database, startRowOfObject, prevItem);
                 m_LibraryDatabase.push_back(newLibraryEntity);
             }
             startRowOfObject = i;
@@ -238,14 +238,16 @@ void LibraryApp::processUserInput(std::string &input){
         }
         //for the last item
         if(i == database.size() -1){
-            newLibraryEntity = createNewLendingItem(database, startRowOfObject, prevItem, generateNewId());
+            newLibraryEntity = createNewLendingItem(database, startRowOfObject, prevItem);
             m_LibraryDatabase.push_back(newLibraryEntity);
         }
      }
  }
 
- LendingItem* LibraryApp::createNewLendingItem(vector<string> &database, int &startrow, Enums::ItemTypes type, int id){
+ LendingItem* LibraryApp::createNewLendingItem(vector<string> &database, int &startrow, Enums::ItemTypes type){
      LendingItem* newItem;
+     int id;
+     m_GuiLibrary.str2int(id, database[startrow+3].c_str());
      int borrowerIndexInArray = 4; //will be 5 for CD, otherwise 4.
      switch(type){
          case Enums::CD:
@@ -270,6 +272,7 @@ void LibraryApp::processUserInput(std::string &input){
      int iBorrower;
      m_GuiLibrary.str2int(iBorrower, strBorrower.c_str());
      newItem->setLenderIndex(iBorrower);
+     m_IdCount++;
      return newItem;
  }
 
